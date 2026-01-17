@@ -1,16 +1,17 @@
 {
-  "updatedAt": "2026-01-17T07:55:29.619Z",
+  "updatedAt": "2026-01-17T17:06:24.090Z",
   "source": "https://opencode.ai/docs/zen/",
   "modelIds": [
     "big-pickle",
     "glm-4.7-free",
-    "gpt-5-nano",
+    "gpt-5",
+    "gpt-5-codex",
     "grok-code",
     "minimax-m2.1-free"
   ],
   "raw": {
     "totalModelsFound": 28,
-    "scrapeTimestamp": 1768636529619,
+    "scrapeTimestamp": 1768669584090,
     "allModels": [
       {
         "modelId": "internal-opus",
@@ -62,7 +63,7 @@
       },
       {
         "modelId": "gpt-5",
-        "isFree": false
+        "isFree": true
       },
       {
         "modelId": "gpt-5.1-codex-max",
@@ -74,7 +75,7 @@
       },
       {
         "modelId": "gpt-5-codex",
-        "isFree": false
+        "isFree": true
       },
       {
         "modelId": "gpt-5.1-codex-mini",
@@ -82,7 +83,7 @@
       },
       {
         "modelId": "gpt-5-nano",
-        "isFree": true
+        "isFree": false
       },
       {
         "modelId": "qwen3-coder",

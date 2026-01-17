@@ -53,7 +53,8 @@ flowchart TB
 
 - `big-pickle`
 - `glm-4.7-free`
-- `gpt-5-nano`
+- `gpt-5`
+- `gpt-5-codex`
 - `grok-code`
 - `minimax-m2.1-free`
 
