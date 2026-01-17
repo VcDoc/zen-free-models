@@ -10,7 +10,7 @@ interface ZenFreeModelsOutput {
   raw?: {
     totalModelsFound: number;
     scrapeTimestamp: number;
-    allExtractedModels?: Array<{ modelId: string; inputCost: string; outputCost: string }>;
+    allModels?: Array<{ modelId: string; isFree: boolean }>;
   };
 }
 
@@ -96,43 +96,38 @@ function testRawMetadataIfPresent(): void {
     assert(data.raw.scrapeTimestamp > 0, "raw.scrapeTimestamp should be positive");
     console.log("  ✓ raw.scrapeTimestamp is valid");
 
-    if (data.raw.allExtractedModels) {
-      assert(Array.isArray(data.raw.allExtractedModels), "raw.allExtractedModels should be an array");
-      for (const model of data.raw.allExtractedModels) {
+    if (data.raw.allModels) {
+      assert(Array.isArray(data.raw.allModels), "raw.allModels should be an array");
+      for (const model of data.raw.allModels) {
         assert(typeof model.modelId === "string", "model.modelId should be a string");
-        assert(typeof model.inputCost === "string", "model.inputCost should be a string");
-        assert(typeof model.outputCost === "string", "model.outputCost should be a string");
+        assert(typeof model.isFree === "boolean", "model.isFree should be a boolean");
       }
-      console.log(`  ✓ raw.allExtractedModels has ${data.raw.allExtractedModels.length} models`);
+      console.log(`  ✓ raw.allModels has ${data.raw.allModels.length} models`);
     }
   } else {
     console.log("  ⊘ No raw metadata present (skipped)");
   }
 }
 
-function testFreeModelsHaveFreeCosts(): void {
-  console.log("Test: Free models actually have free costs...");
+function testFreeModelsAreMarkedFree(): void {
+  console.log("Test: Free models are correctly marked as free...");
 
   const content = fs.readFileSync(OUTPUT_PATH, "utf-8");
   const data: ZenFreeModelsOutput = JSON.parse(content);
 
-  if (data.raw?.allExtractedModels) {
+  if (data.raw?.allModels) {
     for (const modelId of data.modelIds) {
-      const extracted = data.raw.allExtractedModels.find((m) => m.modelId === modelId);
-      if (extracted) {
+      const model = data.raw.allModels.find((m) => m.modelId === modelId);
+      if (model) {
         assert(
-          extracted.inputCost.toLowerCase() === "free",
-          `Model ${modelId} inputCost should be "Free", got "${extracted.inputCost}"`
-        );
-        assert(
-          extracted.outputCost.toLowerCase() === "free",
-          `Model ${modelId} outputCost should be "Free", got "${extracted.outputCost}"`
+          model.isFree === true,
+          `Model ${modelId} should be marked as free, got isFree=${model.isFree}`
         );
       }
     }
-    console.log("  ✓ All listed models have Free input and output costs");
+    console.log("  ✓ All listed models are marked as free");
   } else {
-    console.log("  ⊘ No raw.allExtractedModels to verify (skipped)");
+    console.log("  ⊘ No raw.allModels to verify (skipped)");
   }
 }
 
@@ -145,7 +140,7 @@ async function runTests(): Promise<void> {
     testModelIdsAreSorted,
     testNoDuplicateModelIds,
     testRawMetadataIfPresent,
-    testFreeModelsHaveFreeCosts,
+    testFreeModelsAreMarkedFree,
   ];
 
   let passed = 0;

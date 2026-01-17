@@ -3,6 +3,7 @@ import { Stagehand } from "@browserbasehq/stagehand";
 import { z } from "zod";
 import * as fs from "fs";
 import * as path from "path";
+import { matchFreeModelsToIdsWithLLM } from "./matchFreeModelsToIds";
 
 interface ZenFreeModelsOutput {
   updatedAt: string;
@@ -19,15 +20,6 @@ const ZEN_API_URL = "https://opencode.ai/zen/v1/models";
 const ZEN_DOCS_URL = "https://opencode.ai/docs/zen/";
 const OUTPUT_PATH = path.join(__dirname, "../../zen-free-models.json");
 const CACHE_DIR = path.join(__dirname, "../../.stagehand-cache");
-
-// Mapping from pricing table display names to actual API model IDs
-const FREE_MODEL_NAME_TO_ID: Record<string, string> = {
-  "big pickle": "big-pickle",
-  "grok code fast 1": "grok-code",
-  "minimax m2.1": "minimax-m2.1-free",
-  "glm 4.7": "glm-4.7-free",
-  "gpt 5 nano": "gpt-5-nano",
-};
 
 // Zod schema for extracting free models from pricing table
 const PricingTableSchema = z.object({
@@ -90,39 +82,6 @@ async function scrapeFreeModelsFromDocs(): Promise<string[]> {
   return extracted.freeModels;
 }
 
-function matchFreeModelsToIds(apiModelIds: string[], freeModelNames: string[]): string[] {
-  const normalize = (s: string) => s.toLowerCase().replace(/[^a-z0-9.]/g, "");
-  const apiIdSet = new Set(apiModelIds.map(id => id.toLowerCase()));
-  const freeIds: string[] = [];
-
-  for (const freeName of freeModelNames) {
-    const normalizedName = normalize(freeName);
-
-    // First, try the explicit mapping
-    const mappedId = FREE_MODEL_NAME_TO_ID[freeName.toLowerCase()];
-    if (mappedId && apiIdSet.has(mappedId.toLowerCase())) {
-      const actualId = apiModelIds.find(id => id.toLowerCase() === mappedId.toLowerCase());
-      if (actualId && !freeIds.includes(actualId)) {
-        freeIds.push(actualId);
-      }
-      continue;
-    }
-
-    // Fallback: try to find exact match in API IDs
-    for (const apiId of apiModelIds) {
-      const normalizedApiId = normalize(apiId);
-      if (normalizedApiId === normalizedName) {
-        if (!freeIds.includes(apiId)) {
-          freeIds.push(apiId);
-        }
-        break;
-      }
-    }
-  }
-
-  return freeIds;
-}
-
 async function main(): Promise<void> {
   try {
     // Step 1: Get all model IDs from the API
@@ -132,7 +91,7 @@ async function main(): Promise<void> {
     const freeModelNames = await scrapeFreeModelsFromDocs();
 
     // Step 3: Match free models to their API IDs
-    const freeModelIds = matchFreeModelsToIds(apiModelIds, freeModelNames);
+    const freeModelIds = await matchFreeModelsToIdsWithLLM(apiModelIds, freeModelNames);
 
     if (freeModelIds.length === 0) {
       console.error("No free models found!");

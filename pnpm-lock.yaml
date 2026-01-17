@@ -31,6 +31,9 @@ importers:
       dotenv:
         specifier: ^17.2.3
         version: 17.2.3
+      openai:
+        specifier: ^6.16.0
+        version: 6.16.0(ws@8.19.0(bufferutil@4.1.0))(zod@4.3.5)
       zod:
         specifier: ^4.3.5
         version: 4.3.5
@@ -1206,6 +1209,18 @@ packages:
       zod:
         optional: true
 
+  openai@6.16.0:
+    resolution: {integrity: sha512-fZ1uBqjFUjXzbGc35fFtYKEOxd20kd9fDpFeqWtsOZWiubY8CZ1NAlXHW3iathaFvqmNtCWMIsosCuyeI7Joxg==}
+    hasBin: true
+    peerDependencies:
+      ws: ^8.18.0
+      zod: ^3.25 || ^4.0
+    peerDependenciesMeta:
+      ws:
+        optional: true
+      zod:
+        optional: true
+
   p-finally@1.0.0:
     resolution: {integrity: sha512-LICb2p9CB7FS+0eR1oqWnHhp0FljGLZCWBE9aix0Uye9W8LTQPwMTYVGWQWIw9RdQiDg4+epXQODwIYJtSJaow==}
     engines: {node: '>=4'}
@@ -1821,7 +1836,7 @@ snapshots:
       '@ai-sdk/perplexity': 2.0.23(zod@4.3.5)
       '@ai-sdk/togetherai': 1.0.31(zod@4.3.5)
       '@ai-sdk/xai': 2.0.53(zod@4.3.5)
-      '@langchain/core': 0.3.80(@opentelemetry/api@1.9.0)(openai@4.104.0(ws@8.19.0(bufferutil@4.1.0))(zod@4.3.5))
+      '@langchain/core': 0.3.80(@opentelemetry/api@1.9.0)(openai@6.16.0(ws@8.19.0(bufferutil@4.1.0))(zod@4.3.5))
       bufferutil: 4.1.0
       chrome-launcher: 1.2.1
       ollama-ai-provider-v2: 1.5.5(zod@4.3.5)
@@ -1947,14 +1962,14 @@ snapshots:
       wrap-ansi: 8.1.0
       wrap-ansi-cjs: wrap-ansi@7.0.0
 
-  '@langchain/core@0.3.80(@opentelemetry/api@1.9.0)(openai@4.104.0(ws@8.19.0(bufferutil@4.1.0))(zod@4.3.5))':
+  '@langchain/core@0.3.80(@opentelemetry/api@1.9.0)(openai@6.16.0(ws@8.19.0(bufferutil@4.1.0))(zod@4.3.5))':
     dependencies:
       '@cfworker/json-schema': 4.1.1
       ansi-styles: 5.2.0
       camelcase: 6.3.0
       decamelize: 1.2.0
       js-tiktoken: 1.0.21
-      langsmith: 0.3.87(@opentelemetry/api@1.9.0)(openai@4.104.0(ws@8.19.0(bufferutil@4.1.0))(zod@4.3.5))
+      langsmith: 0.3.87(@opentelemetry/api@1.9.0)(openai@6.16.0(ws@8.19.0(bufferutil@4.1.0))(zod@4.3.5))
       mustache: 4.2.0
       p-queue: 6.6.2
       p-retry: 4.6.2
@@ -1969,7 +1984,7 @@ snapshots:
 
   '@langchain/openai@0.4.9(@langchain/core@0.3.80(@opentelemetry/api@1.9.0)(openai@4.104.0(ws@8.19.0(bufferutil@4.1.0))(zod@4.3.5)))(ws@8.19.0(bufferutil@4.1.0))':
     dependencies:
-      '@langchain/core': 0.3.80(@opentelemetry/api@1.9.0)(openai@4.104.0(ws@8.19.0(bufferutil@4.1.0))(zod@4.3.5))
+      '@langchain/core': 0.3.80(@opentelemetry/api@1.9.0)(openai@6.16.0(ws@8.19.0(bufferutil@4.1.0))(zod@4.3.5))
       js-tiktoken: 1.0.21
       openai: 4.104.0(ws@8.19.0(bufferutil@4.1.0))(zod@3.25.76)
       zod: 3.25.76
@@ -2759,7 +2774,7 @@ snapshots:
       jwa: 2.0.1
       safe-buffer: 5.2.1
 
-  langsmith@0.3.87(@opentelemetry/api@1.9.0)(openai@4.104.0(ws@8.19.0(bufferutil@4.1.0))(zod@4.3.5)):
+  langsmith@0.3.87(@opentelemetry/api@1.9.0)(openai@6.16.0(ws@8.19.0(bufferutil@4.1.0))(zod@4.3.5)):
     dependencies:
       '@types/uuid': 10.0.0
       chalk: 4.1.2
@@ -2769,7 +2784,7 @@ snapshots:
       uuid: 10.0.0
     optionalDependencies:
       '@opentelemetry/api': 1.9.0
-      openai: 4.104.0(ws@8.19.0(bufferutil@4.1.0))(zod@4.3.5)
+      openai: 6.16.0(ws@8.19.0(bufferutil@4.1.0))(zod@4.3.5)
 
   lighthouse-logger@2.0.2:
     dependencies:
@@ -2894,6 +2909,11 @@ snapshots:
       zod: 4.3.5
     transitivePeerDependencies:
       - encoding
+
+  openai@6.16.0(ws@8.19.0(bufferutil@4.1.0))(zod@4.3.5):
+    optionalDependencies:
+      ws: 8.19.0(bufferutil@4.1.0)
+      zod: 4.3.5
 
   p-finally@1.0.0: {}
 

@@ -34,15 +34,62 @@ if [[ $? -ne 0 ]]; then
   exit 0
 fi
 
-# Decode base64 content and extract modelIds
-content=$(echo "$response" | grep -o '"content":"[^"]*"' | sed 's/"content":"//;s/"$//' | tr -d '\n' | base64 -d 2>/dev/null)
-if [[ -z "$content" ]]; then
-  echo "Warning: Failed to decode zen-free-models content" >&2
+# Parse GitHub API response and extract modelIds
+# Prefer jq if available, fall back to Node.js
+parse_with_jq() {
+  local base64_content
+  base64_content=$(echo "$response" | jq -r '.content // empty')
+  if [[ -z "$base64_content" ]]; then
+    return 1
+  fi
+  content=$(echo "$base64_content" | base64 -d)
+  model_ids=$(echo "$content" | jq -c '.modelIds // []')
+}
+
+parse_with_node() {
+  local parse_result
+  parse_result=$(node -e "
+    const response = JSON.parse(process.argv[1]);
+    if (!response.content) {
+      console.error('No content field in response');
+      process.exit(1);
+    }
+    const decoded = Buffer.from(response.content, 'base64').toString('utf-8');
+    const data = JSON.parse(decoded);
+    console.log(JSON.stringify({ content: decoded, modelIds: data.modelIds || [] }));
+  " "$response" 2>/dev/null)
+
+  if [[ $? -ne 0 || -z "$parse_result" ]]; then
+    return 1
+  fi
+
+  content=$(echo "$parse_result" | node -e "const d=require('fs').readFileSync(0,'utf-8');console.log(JSON.parse(d).content)")
+  model_ids=$(echo "$parse_result" | node -e "const d=require('fs').readFileSync(0,'utf-8');console.log(JSON.stringify(JSON.parse(d).modelIds))")
+}
+
+# Try jq first, then Node.js
+if command -v jq &> /dev/null; then
+  if ! parse_with_jq; then
+    echo "Warning: Failed to parse with jq, trying Node.js..." >&2
+    if command -v node &> /dev/null; then
+      if ! parse_with_node; then
+        echo "Warning: Failed to parse zen-free-models content" >&2
+        exit 0
+      fi
+    else
+      echo "Warning: Neither jq nor Node.js available for JSON parsing" >&2
+      exit 0
+    fi
+  fi
+elif command -v node &> /dev/null; then
+  if ! parse_with_node; then
+    echo "Warning: Failed to parse zen-free-models content" >&2
+    exit 0
+  fi
+else
+  echo "Warning: Neither jq nor Node.js available for JSON parsing" >&2
   exit 0
 fi
-
-# Extract modelIds array using simple parsing
-model_ids=$(echo "$content" | grep -o '"modelIds":\s*\[[^]]*\]' | sed 's/"modelIds":\s*//')
 
 if [[ -z "$model_ids" || "$model_ids" == "[]" ]]; then
   echo "Warning: No free models available - disabling opencode provider" >&2
