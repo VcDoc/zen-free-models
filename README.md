@@ -59,10 +59,12 @@ flowchart TB
 
 ## Requirements
 
-- **macOS or Linux**
+- **macOS, Linux, or WSL**
 - **Node.js** (for JSON config updates)
 - **curl** (for fetching from GitHub API)
 - **Bash or Zsh** (for shell wrapper function)
+
+> **WSL users:** Install dependencies with `sudo apt install nodejs curl` if not already installed.
 
 ## Quick Start
 
