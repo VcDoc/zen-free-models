@@ -127,18 +127,12 @@ async function main(): Promise<void> {
 
   const provider = (config as Record<string, unknown>).provider as Record<string, unknown>;
 
-  if (!provider.opencode) {
-    provider.opencode = {};
-  }
+  // Use whitelist to restrict OpenCode Zen to only free models
+  provider.opencode = {
+    whitelist: data.modelIds,
+  };
 
-  const opencodeProvider = provider.opencode as Record<string, unknown>;
-
-  opencodeProvider.models = {};
-  for (const id of data.modelIds) {
-    (opencodeProvider.models as Record<string, unknown>)[id] = {};
-  }
-
-  console.log(`Configured ${data.modelIds.length} models in provider.opencode.models:`);
+  console.log(`Whitelisted ${data.modelIds.length} free models for provider.opencode:`);
   data.modelIds.forEach(id => console.log(`  - ${id}`));
 
   const tmpPath = `${OPENCODE_CONFIG_PATH}.tmp.${Date.now()}`;

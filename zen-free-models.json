@@ -1,156 +1,128 @@
 {
-  "updatedAt": "2026-01-17T06:44:20.502Z",
+  "updatedAt": "2026-01-17T07:03:48.966Z",
   "source": "https://opencode.ai/docs/zen/",
   "modelIds": [
     "big-pickle",
-    "glm-4.7",
+    "glm-4.7-free",
     "gpt-5-nano",
-    "grok-code-fast-1",
+    "grok-code",
     "minimax-m2.1-free"
   ],
   "raw": {
     "totalModelsFound": 28,
-    "scrapeTimestamp": 1768632260502,
-    "allExtractedModels": [
+    "scrapeTimestamp": 1768633428966,
+    "allModels": [
       {
-        "modelId": "big-pickle",
-        "inputCost": "Free",
-        "outputCost": "Free"
+        "modelId": "internal-opus",
+        "isFree": false
       },
       {
-        "modelId": "grok-code-fast-1",
-        "inputCost": "Free",
-        "outputCost": "Free"
+        "modelId": "claude-opus-4-5",
+        "isFree": false
       },
       {
-        "modelId": "minimax-m2.1-free",
-        "inputCost": "Free",
-        "outputCost": "Free"
-      },
-      {
-        "modelId": "glm-4.7",
-        "inputCost": "Free",
-        "outputCost": "Free"
-      },
-      {
-        "modelId": "glm-4.6",
-        "inputCost": "$0.60",
-        "outputCost": "$2.20"
-      },
-      {
-        "modelId": "kimi-k2",
-        "inputCost": "$0.40",
-        "outputCost": "$2.50"
-      },
-      {
-        "modelId": "kimi-k2-thinking",
-        "inputCost": "$0.40",
-        "outputCost": "$2.50"
-      },
-      {
-        "modelId": "qwen3-coder",
-        "inputCost": "$0.45",
-        "outputCost": "$1.50"
-      },
-      {
-        "modelId": "claude-sonnet-4.5",
-        "inputCost": "$3.00",
-        "outputCost": "$15.00"
-      },
-      {
-        "modelId": "claude-sonnet-4.5",
-        "inputCost": "$6.00",
-        "outputCost": "$22.50"
+        "modelId": "claude-opus-4-1",
+        "isFree": false
       },
       {
         "modelId": "claude-sonnet-4",
-        "inputCost": "$3.00",
-        "outputCost": "$15.00"
+        "isFree": false
       },
       {
-        "modelId": "claude-sonnet-4",
-        "inputCost": "$6.00",
-        "outputCost": "$22.50"
+        "modelId": "claude-sonnet-4-5",
+        "isFree": false
       },
       {
-        "modelId": "claude-haiku-4.5",
-        "inputCost": "$1.00",
-        "outputCost": "$5.00"
+        "modelId": "claude-3-5-haiku",
+        "isFree": false
       },
       {
-        "modelId": "claude-haiku-3.5",
-        "inputCost": "$0.80",
-        "outputCost": "$4.00"
-      },
-      {
-        "modelId": "claude-opus-4.5",
-        "inputCost": "$5.00",
-        "outputCost": "$25.00"
-      },
-      {
-        "modelId": "claude-opus-4.1",
-        "inputCost": "$15.00",
-        "outputCost": "$75.00"
+        "modelId": "claude-haiku-4-5",
+        "isFree": false
       },
       {
         "modelId": "gemini-3-pro",
-        "inputCost": "$2.00",
-        "outputCost": "$12.00"
-      },
-      {
-        "modelId": "gemini-3-pro",
-        "inputCost": "$4.00",
-        "outputCost": "$18.00"
+        "isFree": false
       },
       {
         "modelId": "gemini-3-flash",
-        "inputCost": "$0.50",
-        "outputCost": "$3.00"
+        "isFree": false
       },
       {
         "modelId": "gpt-5.2",
-        "inputCost": "$1.75",
-        "outputCost": "$14.00"
+        "isFree": false
       },
       {
         "modelId": "gpt-5.2-codex",
-        "inputCost": "$1.75",
-        "outputCost": "$14.00"
+        "isFree": false
       },
       {
         "modelId": "gpt-5.1",
-        "inputCost": "$1.07",
-        "outputCost": "$8.50"
-      },
-      {
-        "modelId": "gpt-5.1-codex",
-        "inputCost": "$1.07",
-        "outputCost": "$8.50"
-      },
-      {
-        "modelId": "gpt-5.1-codex-max",
-        "inputCost": "$1.25",
-        "outputCost": "$10.00"
-      },
-      {
-        "modelId": "gpt-5.1-codex-mini",
-        "inputCost": "$0.25",
-        "outputCost": "$2.00"
+        "isFree": false
       },
       {
         "modelId": "gpt-5",
-        "inputCost": "$1.07",
-        "outputCost": "$8.50"
+        "isFree": false
+      },
+      {
+        "modelId": "gpt-5.1-codex-max",
+        "isFree": false
+      },
+      {
+        "modelId": "gpt-5.1-codex",
+        "isFree": false
       },
       {
         "modelId": "gpt-5-codex",
-        "inputCost": "$1.07",
-        "outputCost": "$8.50"
+        "isFree": false
+      },
+      {
+        "modelId": "gpt-5.1-codex-mini",
+        "isFree": false
       },
       {
         "modelId": "gpt-5-nano",
-        "inputCost": "Free",
-        "outputCost": "Free"
+        "isFree": true
+      },
+      {
+        "modelId": "qwen3-coder",
+        "isFree": false
+      },
+      {
+        "modelId": "glm-4.6",
+        "isFree": false
+      },
+      {
+        "modelId": "kimi-k2",
+        "isFree": false
+      },
+      {
+        "modelId": "kimi-k2-thinking",
+        "isFree": false
+      },
+      {
+        "modelId": "minimax-m2.1-free",
+        "isFree": true
+      },
+      {
+        "modelId": "glm-4.7-free",
+        "isFree": true
+      },
+      {
+        "modelId": "grok-code",
+        "isFree": true
+      },
+      {
+        "modelId": "alpha-glm-4.7",
+        "isFree": false
+      },
+      {
+        "modelId": "alpha-gd4",
+        "isFree": false
+      },
+      {
+        "modelId": "big-pickle",
+        "isFree": true
       }
     ]
   }
