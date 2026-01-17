@@ -49,12 +49,14 @@ async function scrapeFreeModelsFromDocs(): Promise<string[]> {
     fs.mkdirSync(CACHE_DIR, { recursive: true });
   }
 
+  // Note: Stagehand doesn't support serviceTier option for flex pricing.
+  // The main LLM cost savings come from matchFreeModelsToIds.ts which uses flex tier.
   const stagehand = new Stagehand({
     env: "BROWSERBASE",
     verbose: 1,
     cacheDir: CACHE_DIR,
     model: {
-      modelName: "openai/gpt-4o-mini",
+      modelName: "openai/gpt-5-mini",
       apiKey: process.env.OPENAI_API_KEY,
     },
   });
@@ -71,7 +73,14 @@ async function scrapeFreeModelsFromDocs(): Promise<string[]> {
   console.log("Extracting free models from pricing table...");
 
   const extracted = await stagehand.extract(
-    "Look at the Pricing table. Find all rows where BOTH the Input column AND the Output column show 'Free'. Return the model names from those rows.",
+    `Look at the Pricing table carefully. For each model row, check the Input price column and the Output price column.
+
+ONLY include a model if BOTH of these conditions are true:
+1. The Input column shows exactly "Free" (not a dollar amount like "$0.50" or "$2.00")
+2. The Output column shows exactly "Free" (not a dollar amount)
+
+Be very careful - most models have dollar amounts, only a few are actually free.
+Return ONLY the model names that have "Free" in BOTH columns.`,
     PricingTableSchema
   );
 

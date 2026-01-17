@@ -168,8 +168,8 @@ export async function matchFreeModelsToIdsWithLLM(
       const availableIds = apiModelIds.filter((id) => !freeIds.includes(id));
 
       const response = await openai.chat.completions.create({
-        model: "gpt-4o-mini",
-        temperature: 0,
+        model: "gpt-5-mini",
+        service_tier: "flex",
         messages: [
           {
             role: "system",

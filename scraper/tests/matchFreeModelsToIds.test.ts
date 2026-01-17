@@ -1,4 +1,4 @@
-import { matchFreeModelsToIds } from "./matchFreeModelsToIds";
+import { matchFreeModelsToIds } from "../src/matchFreeModelsToIds";
 
 function assert(condition: boolean, message: string): void {
   if (!condition) {
