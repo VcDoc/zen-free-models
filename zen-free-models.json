@@ -1,0 +1,157 @@
+{
+  "updatedAt": "2026-01-17T06:44:20.502Z",
+  "source": "https://opencode.ai/docs/zen/",
+  "modelIds": [
+    "big-pickle",
+    "glm-4.7",
+    "gpt-5-nano",
+    "grok-code-fast-1",
+    "minimax-m2.1-free"
+  ],
+  "raw": {
+    "totalModelsFound": 28,
+    "scrapeTimestamp": 1768632260502,
+    "allExtractedModels": [
+      {
+        "modelId": "big-pickle",
+        "inputCost": "Free",
+        "outputCost": "Free"
+      },
+      {
+        "modelId": "grok-code-fast-1",
+        "inputCost": "Free",
+        "outputCost": "Free"
+      },
+      {
+        "modelId": "minimax-m2.1-free",
+        "inputCost": "Free",
+        "outputCost": "Free"
+      },
+      {
+        "modelId": "glm-4.7",
+        "inputCost": "Free",
+        "outputCost": "Free"
+      },
+      {
+        "modelId": "glm-4.6",
+        "inputCost": "$0.60",
+        "outputCost": "$2.20"
+      },
+      {
+        "modelId": "kimi-k2",
+        "inputCost": "$0.40",
+        "outputCost": "$2.50"
+      },
+      {
+        "modelId": "kimi-k2-thinking",
+        "inputCost": "$0.40",
+        "outputCost": "$2.50"
+      },
+      {
+        "modelId": "qwen3-coder",
+        "inputCost": "$0.45",
+        "outputCost": "$1.50"
+      },
+      {
+        "modelId": "claude-sonnet-4.5",
+        "inputCost": "$3.00",
+        "outputCost": "$15.00"
+      },
+      {
+        "modelId": "claude-sonnet-4.5",
+        "inputCost": "$6.00",
+        "outputCost": "$22.50"
+      },
+      {
+        "modelId": "claude-sonnet-4",
+        "inputCost": "$3.00",
+        "outputCost": "$15.00"
+      },
+      {
+        "modelId": "claude-sonnet-4",
+        "inputCost": "$6.00",
+        "outputCost": "$22.50"
+      },
+      {
+        "modelId": "claude-haiku-4.5",
+        "inputCost": "$1.00",
+        "outputCost": "$5.00"
+      },
+      {
+        "modelId": "claude-haiku-3.5",
+        "inputCost": "$0.80",
+        "outputCost": "$4.00"
+      },
+      {
+        "modelId": "claude-opus-4.5",
+        "inputCost": "$5.00",
+        "outputCost": "$25.00"
+      },
+      {
+        "modelId": "claude-opus-4.1",
+        "inputCost": "$15.00",
+        "outputCost": "$75.00"
+      },
+      {
+        "modelId": "gemini-3-pro",
+        "inputCost": "$2.00",
+        "outputCost": "$12.00"
+      },
+      {
+        "modelId": "gemini-3-pro",
+        "inputCost": "$4.00",
+        "outputCost": "$18.00"
+      },
+      {
+        "modelId": "gemini-3-flash",
+        "inputCost": "$0.50",
+        "outputCost": "$3.00"
+      },
+      {
+        "modelId": "gpt-5.2",
+        "inputCost": "$1.75",
+        "outputCost": "$14.00"
+      },
+      {
+        "modelId": "gpt-5.2-codex",
+        "inputCost": "$1.75",
+        "outputCost": "$14.00"
+      },
+      {
+        "modelId": "gpt-5.1",
+        "inputCost": "$1.07",
+        "outputCost": "$8.50"
+      },
+      {
+        "modelId": "gpt-5.1-codex",
+        "inputCost": "$1.07",
+        "outputCost": "$8.50"
+      },
+      {
+        "modelId": "gpt-5.1-codex-max",
+        "inputCost": "$1.25",
+        "outputCost": "$10.00"
+      },
+      {
+        "modelId": "gpt-5.1-codex-mini",
+        "inputCost": "$0.25",
+        "outputCost": "$2.00"
+      },
+      {
+        "modelId": "gpt-5",
+        "inputCost": "$1.07",
+        "outputCost": "$8.50"
+      },
+      {
+        "modelId": "gpt-5-codex",
+        "inputCost": "$1.07",
+        "outputCost": "$8.50"
+      },
+      {
+        "modelId": "gpt-5-nano",
+        "inputCost": "Free",
+        "outputCost": "Free"
+      }
+    ]
+  }
+}

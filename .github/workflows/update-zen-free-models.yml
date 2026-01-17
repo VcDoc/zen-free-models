@@ -1,0 +1,97 @@
+name: Update Zen Free Models
+
+on:
+  schedule:
+    - cron: '0 3 * * *'
+  workflow_dispatch:
+
+jobs:
+  update-models:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: 10
+
+      - name: Install dependencies
+        working-directory: ./scraper
+        run: pnpm install
+
+      - name: Restore Stagehand cache
+        uses: actions/cache@v4
+        with:
+          path: .stagehand-cache
+          key: stagehand-cache-${{ runner.os }}-${{ hashFiles('scraper/src/index.ts') }}
+          restore-keys: |
+            stagehand-cache-${{ runner.os }}-
+
+      - name: Run scraper
+        working-directory: ./scraper
+        env:
+          BROWSERBASE_API_KEY: ${{ secrets.BROWSERBASE_API_KEY }}
+          BROWSERBASE_PROJECT_ID: ${{ secrets.BROWSERBASE_PROJECT_ID }}
+        run: pnpm start
+
+      - name: Run tests
+        working-directory: ./scraper
+        run: pnpm test
+
+      - name: Check for changes
+        id: changed
+        run: |
+          # Check both the output JSON and the cache
+          git add -A
+          git diff --cached --quiet && echo "changed=false" >> $GITHUB_OUTPUT || echo "changed=true" >> $GITHUB_OUTPUT
+
+      - name: Commit and push
+        if: steps.changed.outputs.changed == 'true'
+        run: |
+          git config user.name "github-actions"
+          git config user.email "github-actions@github.com"
+          git add zen-free-models.json .stagehand-cache
+          git commit -m "Update free Zen models - $(date -u +%Y-%m-%d)"
+          git push
+
+  notify-on-failure:
+    runs-on: ubuntu-latest
+    needs: update-models
+    if: failure()
+    steps:
+      - name: Create failure issue
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const title = 'Scraper failed - ' + new Date().toISOString().split('T')[0];
+            const runUrl = context.serverUrl + '/' + context.repo.owner + '/' + context.repo.repo + '/actions/runs/' + context.runId;
+            const body = 'The daily Zen free models scrape failed.\n\n' +
+              '**Workflow run:** ' + runUrl + '\n\n' +
+              'Please investigate the logs and fix the issue.';
+
+            // Check if an issue with this title already exists
+            const { data: issues } = await github.rest.issues.listForRepo({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              state: 'open',
+              labels: 'scraper-failure'
+            });
+
+            const existingIssue = issues.find(issue => issue.title === title);
+
+            if (!existingIssue) {
+              await github.rest.issues.create({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                title: title,
+                labels: ['scraper-failure'],
+                body: body
+              });
+            }
