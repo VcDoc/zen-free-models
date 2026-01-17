@@ -59,10 +59,12 @@ save() {
 }
 
 parse_jq() {
-  local b64=$(echo "$resp" | jq -r '.content // empty')
+  local b64
+  b64=$(printf '%s' "$resp" | jq -r '.content // empty')
   [[ -z "$b64" ]] && return 1
-  data=$(echo "$b64" | base64 -d)
-  ids=$(echo "$data" | jq -c '.modelIds // []')
+  data=$(printf '%s' "$b64" | base64 --decode 2>/dev/null || printf '%s' "$b64" | base64 -d 2>/dev/null || printf '%s' "$b64" | base64 -D 2>/dev/null)
+  [[ -z "$data" ]] && return 1
+  ids=$(printf '%s' "$data" | jq -c '.modelIds // []')
 }
 
 parse_node() {

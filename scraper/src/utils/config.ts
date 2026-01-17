@@ -38,8 +38,12 @@ export interface Config {
   initialDelayMs: number;
   /** Timeout for Stagehand initialization in ms */
   stagehandInitTimeoutMs: number;
+  /** Timeout for Stagehand extraction in ms */
+  stagehandExtractTimeoutMs: number;
   /** Timeout for Stagehand close in ms */
   stagehandCloseTimeoutMs: number;
+  /** Timeout for fetch requests in ms */
+  fetchTimeoutMs: number;
   /** Current log level */
   logLevel: LogLevel;
 }
@@ -95,7 +99,9 @@ export function loadConfig(): Config {
     maxRetries: parseIntOrDefault(process.env.MAX_RETRIES, 3),
     initialDelayMs: parseIntOrDefault(process.env.INITIAL_DELAY_MS, 1000),
     stagehandInitTimeoutMs: parseIntOrDefault(process.env.STAGEHAND_INIT_TIMEOUT_MS, 60000),
+    stagehandExtractTimeoutMs: parseIntOrDefault(process.env.STAGEHAND_EXTRACT_TIMEOUT_MS, 60000),
     stagehandCloseTimeoutMs: parseIntOrDefault(process.env.STAGEHAND_CLOSE_TIMEOUT_MS, 10000),
+    fetchTimeoutMs: parseIntOrDefault(process.env.FETCH_TIMEOUT_MS, 30000),
     logLevel: parseLogLevel(process.env.LOG_LEVEL),
   };
 }

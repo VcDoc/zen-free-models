@@ -7,6 +7,54 @@ import { logger } from "../utils/logger.js";
 const NORM_REGEX = /[^a-z0-9.]/g;
 const norm = (s: string) => s.toLowerCase().replace(NORM_REGEX, "");
 
+/** Extract significant tokens from a string (numbers, words 2+ chars) */
+function extractTokens(s: string): Set<string> {
+  const tokens = new Set<string>();
+  const lower = s.toLowerCase();
+  // Extract numbers (including decimals like "4.7")
+  for (const match of lower.matchAll(/\d+(?:\.\d+)?/g)) {
+    tokens.add(match[0]);
+  }
+  // Extract word fragments (2+ chars)
+  for (const match of lower.matchAll(/[a-z]{2,}/g)) {
+    tokens.add(match[0]);
+  }
+  return tokens;
+}
+
+/** Pre-filter API IDs to find likely candidates for a set of display names */
+function prefilterCandidates(apiIds: string[], names: string[]): string[] {
+  const nameTokens = new Map<string, Set<string>>();
+  const allNameTokens = new Set<string>();
+
+  for (const name of names) {
+    const tokens = extractTokens(name);
+    nameTokens.set(name, tokens);
+    for (const t of tokens) allNameTokens.add(t);
+  }
+
+  const candidates = new Set<string>();
+  for (const id of apiIds) {
+    const idTokens = extractTokens(id);
+    // Include if any token overlaps with name tokens
+    for (const token of idTokens) {
+      if (allNameTokens.has(token)) {
+        candidates.add(id);
+        break;
+      }
+    }
+  }
+
+  // Always include IDs ending in "-free" as they're likely matches
+  for (const id of apiIds) {
+    if (id.toLowerCase().endsWith("-free")) {
+      candidates.add(id);
+    }
+  }
+
+  return [...candidates];
+}
+
 type IdMaps = { lower: Map<string, string>; normalized: Map<string, string> };
 
 function buildMaps(apiIds: string[]): IdMaps {
@@ -171,10 +219,14 @@ export async function matchModelsWithLLM(apiIds: string[], names: string[]): Pro
     return matchWithNormalization(names, maps);
   }
 
-  logger.info(`Using LLM to match ${names.length} display names to API IDs...`);
+  // Pre-filter candidates to reduce prompt size
+  const candidates = prefilterCandidates(apiIds, names);
+  logger.info(
+    `Using LLM to match ${names.length} display names (pre-filtered to ${candidates.length}/${apiIds.length} candidate IDs)...`
+  );
 
   try {
-    const content = await callLLM(new OpenAI(), buildMessages(names, apiIds));
+    const content = await callLLM(new OpenAI(), buildMessages(names, candidates));
     const { result, matchedNames } = processLLMMatches(parseLLMResponse(content), maps);
 
     const unmatchedNames = names.filter(n => !matchedNames.has(n.toLowerCase()));

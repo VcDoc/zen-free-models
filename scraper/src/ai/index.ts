@@ -3,6 +3,7 @@ import { z } from "zod";
 
 import { config } from "../utils/config.js";
 import { logger } from "../utils/logger.js";
+import { createTimeout } from "../utils/timeout.js";
 
 /** Schema for extracting free models from pricing table */
 export const PricingTableSchema = z.object({
@@ -27,13 +28,6 @@ ONLY include a model if BOTH of these conditions are true:
 
 Be very careful - most models have dollar amounts, only a few are actually free.
 Return ONLY the model names that have "Free" in BOTH columns.`;
-
-/** Create a timeout promise that rejects after the specified duration */
-export function createTimeout(ms: number, operation: string): Promise<never> {
-  return new Promise((_, reject) =>
-    setTimeout(() => reject(new Error(`${operation} timed out after ${ms}ms`)), ms)
-  );
-}
 
 function getVerbosity(): 0 | 1 | 2 {
   const env = process.env.STAGEHAND_VERBOSE;
@@ -93,7 +87,7 @@ export async function extractFreeModels(stagehand: Stagehand): Promise<string[]>
 
   const extracted = await Promise.race([
     stagehand.extract(EXTRACTION_PROMPT, PricingTableSchema),
-    createTimeout(config.stagehandInitTimeoutMs, "Stagehand extraction"),
+    createTimeout(config.stagehandExtractTimeoutMs, "Stagehand extraction"),
   ]);
 
   logger.debug("Free model names from pricing table:", extracted.freeModels);

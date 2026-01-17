@@ -7,16 +7,13 @@ import { closeStagehand, initStagehand, extractFreeModels } from "./ai/index.js"
 import { matchModelsWithLLM } from "./matching/index.js";
 import { config } from "./utils/config.js";
 import { logger } from "./utils/logger.js";
+import { fetchWithTimeout } from "./utils/timeout.js";
 import type { Output } from "./utils/types.js";
 
 const ApiResponseSchema = z.object({
   data: z.array(
     z.object({
-      id: z
-        .string()
-        .min(1)
-        .max(255)
-        .regex(/^[a-z0-9.-]+$/, "Invalid model ID format"),
+      id: z.string().min(1).max(255),
     })
   ),
 });
@@ -67,7 +64,7 @@ async function fetchModels(): Promise<string[]> {
   logger.info(`Fetching models from API: ${config.zenApiUrl}...`);
 
   return withRetry(async () => {
-    const response = await fetch(config.zenApiUrl);
+    const response = await fetchWithTimeout(config.zenApiUrl);
     if (!response.ok) {
       const message = `API request failed: ${response.status} ${response.statusText}`;
       if (!isRetryable(response.status)) {
