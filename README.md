@@ -57,6 +57,15 @@ flowchart TB
 - `grok-code`
 - `minimax-m2.1-free`
 
+## Requirements
+
+- **macOS** (uses `stat -f` for cache age)
+- **Zsh** (shell function in `~/.zshrc`)
+- **Node.js** (for JSON config updates)
+- **curl** (for fetching from GitHub API)
+
+> **Note:** Linux support would require modifying the `stat` command in the sync script. PRs welcome!
+
 ## Quick Start
 
 ### Option A: Clone the repo (recommended for developers)
@@ -176,7 +185,7 @@ pnpm test
 
 ### GitHub Actions Secrets Required
 
-Add these secrets to your repository:
+Add these as **Repository secrets** (Settings → Secrets and variables → Actions → Repository secrets):
 
 | Secret | Description |
 |--------|-------------|
