@@ -5,6 +5,10 @@ on:
     - cron: '0 5 * * *'  # Midnight EST (UTC-5)
   workflow_dispatch:
 
+permissions:
+  contents: write
+  issues: write
+
 jobs:
   update-models:
     runs-on: ubuntu-latest
