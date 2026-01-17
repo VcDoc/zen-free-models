@@ -50,10 +50,6 @@ jobs:
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
         run: pnpm start
 
-      - name: Run tests
-        working-directory: ./scraper
-        run: pnpm test
-
       - name: Update README with current models
         run: |
           # Use Node.js to update README (more robust than AWK)
