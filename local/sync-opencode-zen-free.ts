@@ -82,7 +82,7 @@ async function fetchModels(): Promise<ZenFreeModels> {
       throw new Error(`HTTP ${response.status} ${response.statusText}`);
     }
 
-    const data: ZenFreeModels = await response.json();
+    const data = (await response.json()) as ZenFreeModels;
 
     if (!data.updatedAt || !Array.isArray(data.modelIds)) {
       throw new Error("Invalid JSON schema: missing updatedAt or modelIds");
@@ -140,12 +140,6 @@ async function main(): Promise<void> {
 
   console.log(`Configured ${data.modelIds.length} models in provider.opencode.models:`);
   data.modelIds.forEach(id => console.log(`  - ${id}`));
-
-  if (!config.providerResolution) {
-    (config as Record<string, unknown>).providerResolution = {};
-  }
-  const providerResolution = (config as Record<string, unknown>).providerResolution as Record<string, unknown>;
-  providerResolution.mode = "strict";
 
   const tmpPath = `${OPENCODE_CONFIG_PATH}.tmp.${Date.now()}`;
   fs.writeFileSync(tmpPath, JSON.stringify(config, null, 2));
