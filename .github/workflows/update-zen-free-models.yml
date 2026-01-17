@@ -2,7 +2,7 @@ name: Update Zen Free Models
 
 on:
   schedule:
-    - cron: '0 3 * * *'
+    - cron: '0 5 * * *'  # Midnight EST (UTC-5)
   workflow_dispatch:
 
 jobs:
@@ -19,8 +19,6 @@ jobs:
 
       - name: Setup pnpm
         uses: pnpm/action-setup@v4
-        with:
-          version: 10
 
       - name: Install dependencies
         working-directory: ./scraper
