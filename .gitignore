@@ -5,3 +5,6 @@ dist/
 .DS_Store
 .opencode
 .claude
+coverage/
+.nyc_output/
+sbom.json

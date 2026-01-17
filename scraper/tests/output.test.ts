@@ -1,8 +1,9 @@
-import { describe, it, before } from "node:test";
 import assert from "node:assert/strict";
 import * as fs from "node:fs";
 import * as path from "node:path";
+import { describe, it, before } from "node:test";
 import { fileURLToPath } from "node:url";
+
 import { OutputSchema, type Output } from "../src/utils/types.js";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
@@ -17,8 +18,10 @@ function load(): Output {
   return cache;
 }
 
-describe("output", () => {
-  before(() => { cache = null; });
+void describe("output", () => {
+  before(() => {
+    cache = null;
+  });
 
   describe("file", () => {
     it("exists", () => {
@@ -98,16 +101,10 @@ describe("output", () => {
       if (d.raw?.allModels) {
         const models = d.raw.allModels;
         for (const id of d.modelIds) {
-          const m = models.find((x) => x.modelId === id);
+          const m = models.find(x => x.modelId === id);
           if (m) assert.strictEqual(m.isFree, true);
         }
       }
     });
-  });
-});
-
-describe("LLM parsing", () => {
-  it("handles malformed JSON", () => {
-    assert.ok(true); // Covered by parseLLMResponse try-catch
   });
 });

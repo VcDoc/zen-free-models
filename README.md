@@ -102,7 +102,7 @@ Add to `~/.zshrc` (Zsh) or `~/.bashrc` (Bash):
 ```bash
 # opencode wrapper - syncs zen free models before launching
 opencode() {
-  ~/.local/share/zen-free-models/sync.sh 2>/dev/null
+  ~/.local/share/zen-free-models/sync.sh 2>&1
   command opencode "$@"
 }
 
@@ -164,6 +164,7 @@ zen-free-models/
 │   └── tsconfig.json
 ├── scripts/
 │   └── sync.sh                      # Local sync script (download this)
+├── LICENSE                          # MIT License
 ├── zen-free-models.json             # Generated output (don't edit)
 └── README.md
 ```
@@ -276,7 +277,13 @@ opencode models opencode
 **"LLM returned no matches"**
 - The scraper will use known mappings as fallback
 - Check if model names have changed on the pricing page
-- Consider adding explicit mappings to `KNOWN_MAPPINGS` in `matching/index.ts`
+- Consider adding explicit mappings to `MAPPINGS` in `scraper/src/matching/index.ts`
+
+**LLM call failed / Skipped unmatched models**
+- Check your OPENAI_API_KEY is valid and has sufficient quota
+- The scraper will continue with models that were successfully matched via mappings
+- Consider adding explicit mappings for models that fail consistently
+- Check logs for specific error details
 
 ### Sync Script Issues
 
@@ -295,3 +302,10 @@ The sync script uses the GitHub API without authentication:
 - **Limit:** 60 requests/hour per IP
 - **Default cache:** 12 hours (well within limits)
 - Increase cache time if hitting limits: `export ZEN_CACHE_MAX_AGE=86400` (24 hours)
+
+## Code Quality
+
+This project includes automated code quality checks:
+- **ESLint**: Linting with TypeScript support
+- **Prettier**: Code formatting
+- **npm audit**: Automated vulnerability scanning

@@ -90,19 +90,19 @@ if [[ -f "$CACHE" ]]; then
   [[ $age -lt $MAX_AGE ]] && exit 0
 fi
 
-resp=$(curl -sf -H "Accept: application/vnd.github.v3+json" "$URL") || { echo "Warning: Fetch failed" >&2; exit 0; }
-[[ -z "$resp" ]] && { echo "Warning: Empty response" >&2; exit 0; }
+resp=$(curl -sf -H "Accept: application/vnd.github.v3+json" "$URL") || { echo "Warning: Fetch failed - check connectivity or cache" >&2; exit 0; }
+[[ -z "$resp" ]] && { echo "Warning: Empty response - check connectivity or cache" >&2; exit 0; }
 
 if command -v jq &>/dev/null; then
-  parse_jq || { command -v node &>/dev/null && parse_node || { echo "Warning: Parse failed" >&2; exit 0; }; }
+  parse_jq || { command -v node &>/dev/null && parse_node || { echo "Warning: Parse failed - check jq or Node.js installation" >&2; exit 0; }; }
 elif command -v node &>/dev/null; then
-  parse_node || { echo "Warning: Parse failed" >&2; exit 0; }
+  parse_node || { echo "Warning: Parse failed - check Node.js installation" >&2; exit 0; }
 else
-  echo "Warning: No jq or node" >&2; exit 0
+  echo "Warning: No jq or Node.js available - install one for JSON parsing" >&2; exit 0
 fi
 
 if [[ -z "$ids" || "$ids" == "[]" ]]; then
-  echo "Warning: No free models" >&2
+  echo "Warning: No free models available - disabling opencode provider" >&2
   save "$data"
   update_conf ""
   exit 0
