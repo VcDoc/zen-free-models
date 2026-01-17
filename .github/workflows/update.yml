@@ -2,8 +2,13 @@ name: Update Zen Free Models
 
 on:
   schedule:
-    - cron: '0 5 * * *'  # Midnight EST (UTC-5)
+    - cron: '0 5 * * *'  # 05:00 UTC daily
   workflow_dispatch:
+
+# Prevent multiple simultaneous runs from creating conflicting commits
+concurrency:
+  group: update-zen-free-models
+  cancel-in-progress: false
 
 permissions:
   contents: write
@@ -33,7 +38,7 @@ jobs:
         uses: actions/cache@v4
         with:
           path: .stagehand-cache
-          key: stagehand-cache-${{ runner.os }}-${{ hashFiles('scraper/src/index.ts') }}
+          key: stagehand-cache-${{ runner.os }}-${{ hashFiles('scraper/src/**/*.ts') }}
           restore-keys: |
             stagehand-cache-${{ runner.os }}-
 
@@ -51,27 +56,29 @@ jobs:
 
       - name: Update README with current models
         run: |
-          # Extract model IDs from JSON and format as markdown list
-          MODELS=$(node -e "
+          # Use Node.js to update README (more robust than AWK)
+          node -e "
+            const fs = require('fs');
             const data = require('./zen-free-models.json');
-            data.modelIds.forEach(id => console.log('- \`' + id + '\`'));
-          ")
 
-          # Update README section between markers
-          awk -v models="$MODELS" '
-            /^## Free Models \(Current\)/ {
-              print
-              getline  # skip empty line
-              print ""
-              print models
-              # Skip old model list until next section
-              while ((getline line) > 0 && line !~ /^## /) {}
-              print ""
-              print line
-              next
+            // Format model IDs as markdown list
+            const modelList = data.modelIds.map(id => '- \`' + id + '\`').join('\n');
+
+            // Read README
+            let readme = fs.readFileSync('README.md', 'utf-8');
+
+            // Replace content between '## Free Models (Current)' and next '##' section
+            const sectionRegex = /(## Free Models \(Current\)\n\n)[\s\S]*?(\n\n## )/;
+            if (sectionRegex.test(readme)) {
+              readme = readme.replace(sectionRegex, '\$1' + modelList + '\$2');
+            } else {
+              console.error('Warning: Could not find Free Models section in README');
+              process.exit(0);
             }
-            { print }
-          ' README.md > README.md.tmp && mv README.md.tmp README.md
+
+            fs.writeFileSync('README.md', readme);
+            console.log('Updated README with', data.modelIds.length, 'models');
+          "
 
       - name: Check for changes
         id: changed

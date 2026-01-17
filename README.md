@@ -105,6 +105,9 @@ opencode() {
   ~/.local/share/zen-free-models/sync.sh 2>/dev/null
   command opencode "$@"
 }
+
+# Force refresh - clears cache and re-syncs before launching
+alias opencode-refresh='rm -f ~/.cache/zen-free-models/models.json && opencode'
 ```
 
 Then reload your shell config:
@@ -128,7 +131,7 @@ The wrapper will:
 
 ### Remote Scraper (GitHub Actions)
 
-- Runs daily at 03:00 UTC
+- Runs daily at 05:00 UTC
 - Fetches model list from `https://opencode.ai/zen/v1/models` API
 - Scrapes pricing table from `https://opencode.ai/docs/zen/` using Stagehand
 - Matches free models (both input and output are "Free") to API model IDs
@@ -148,11 +151,15 @@ The wrapper will:
 ```
 zen-free-models/
 ├── .github/workflows/
-│   └── update-zen-free-models.yml   # Daily scraper workflow
+│   └── update.yml                   # Daily scraper workflow
 ├── scraper/
 │   ├── src/
 │   │   ├── index.ts                 # Stagehand scraper
-│   │   └── index.test.ts            # Output validation tests
+│   │   ├── matching/index.ts        # Model name matching logic
+│   │   └── utils/                   # Config, logger, types
+│   ├── tests/
+│   │   ├── output.test.ts           # Output validation tests
+│   │   └── matching.test.ts         # Matching unit tests
 │   ├── package.json
 │   └── tsconfig.json
 ├── scripts/
@@ -165,7 +172,7 @@ zen-free-models/
 
 ### Prerequisites
 
-- Node.js 20+ (use fnm with `.nvmrc`)
+- Node.js 24+ (use fnm/nvm with `.nvmrc`)
 - pnpm 10+ (via Corepack)
 - Browserbase account (for Stagehand)
 - OpenAI API key (for Stagehand's LLM extraction)
@@ -208,11 +215,16 @@ Add these as **Repository secrets** (Settings → Secrets and variables → Acti
 
 ### Models not updating
 
-```bash
-# Clear local cache
-rm -f ~/.cache/zen-free-models/models.json
+Use the `opencode-refresh` alias to force a cache refresh:
 
-# Run opencode again
+```bash
+opencode-refresh
+```
+
+Or manually clear the cache:
+
+```bash
+rm -f ~/.cache/zen-free-models/models.json
 opencode
 ```
 
@@ -233,3 +245,53 @@ opencode models opencode
 - Check Actions tab for error logs
 - Verify all secrets are set correctly
 - Ensure OpenCode Zen docs page structure hasn't changed
+
+### Browserbase Errors
+
+**"Browserbase quota exceeded"**
+- Check your Browserbase dashboard for usage limits
+- The scraper uses one session per run (daily)
+- Consider upgrading your plan if hitting limits
+
+**"Session failed to initialize"**
+- Verify `BROWSERBASE_API_KEY` and `BROWSERBASE_PROJECT_ID` are correct
+- Check Browserbase status page for outages
+- Try running again (transient errors are retried automatically)
+
+### OpenAI API Errors
+
+**"OPENAI_API_KEY environment variable is not set"**
+- Ensure you've added `OPENAI_API_KEY` to your `.env` file or GitHub secrets
+- The LLM is used for both Stagehand extraction and model name matching
+
+**"OpenAI API error (429)"**
+- Rate limit exceeded - the scraper will retry with exponential backoff
+- If persistent, check your OpenAI usage limits
+
+**"OpenAI API error (401)"**
+- Invalid API key - verify your key is correct and active
+
+### LLM Matching Issues
+
+**"LLM returned no matches"**
+- The scraper will use known mappings as fallback
+- Check if model names have changed on the pricing page
+- Consider adding explicit mappings to `KNOWN_MAPPINGS` in `matching/index.ts`
+
+### Sync Script Issues
+
+**"Neither jq nor Node.js available"**
+- Install either `jq` or Node.js for JSON parsing
+- On Ubuntu: `sudo apt install nodejs` or `sudo apt install jq`
+- On macOS: `brew install node` or `brew install jq`
+
+**Cache always refreshing**
+- Check if `ZEN_CACHE_MAX_AGE` is set too low
+- Default is 12 hours (43200 seconds)
+
+### API Rate Limits
+
+The sync script uses the GitHub API without authentication:
+- **Limit:** 60 requests/hour per IP
+- **Default cache:** 12 hours (well within limits)
+- Increase cache time if hitting limits: `export ZEN_CACHE_MAX_AGE=86400` (24 hours)
