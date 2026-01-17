@@ -59,12 +59,10 @@ flowchart TB
 
 ## Requirements
 
-- **macOS** (uses `stat -f` for cache age)
-- **Zsh** (shell function in `~/.zshrc`)
+- **macOS or Linux**
 - **Node.js** (for JSON config updates)
 - **curl** (for fetching from GitHub API)
-
-> **Note:** Linux support would require modifying the `stat` command in the sync script. PRs welcome!
+- **Bash or Zsh** (for shell wrapper function)
 
 ## Quick Start
 
@@ -95,7 +93,9 @@ curl -o ~/.local/share/zen-free-models/sync.sh \
 chmod +x ~/.local/share/zen-free-models/sync.sh
 ```
 
-### 2. Add shell function to ~/.zshrc
+### 2. Add shell function to your shell's rc file
+
+Add to `~/.zshrc` (Zsh) or `~/.bashrc` (Bash):
 
 ```bash
 # opencode wrapper - syncs zen free models before launching
@@ -105,7 +105,10 @@ opencode() {
 }
 ```
 
-Then run `source ~/.zshrc`.
+Then reload your shell config:
+```bash
+source ~/.zshrc   # or source ~/.bashrc
+```
 
 ### 3. Use normally
 
