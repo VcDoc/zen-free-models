@@ -5,9 +5,7 @@
   "description": "Auto-sync OpenCode configuration with free Zen models",
   "scripts": {
     "scrape": "pnpm --filter zen-free-models-scraper start",
-    "sync": "pnpm --filter zen-free-models-local start",
-    "test": "pnpm --filter zen-free-models-scraper test",
-    "install:all": "pnpm install"
+    "test": "pnpm --filter zen-free-models-scraper test"
   },
   "pnpm": {
     "peerDependencyRules": {

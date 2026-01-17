@@ -45,6 +45,30 @@ jobs:
         working-directory: ./scraper
         run: pnpm test
 
+      - name: Update README with current models
+        run: |
+          # Extract model IDs from JSON and format as markdown list
+          MODELS=$(node -e "
+            const data = require('./zen-free-models.json');
+            data.modelIds.forEach(id => console.log('- \`' + id + '\`'));
+          ")
+
+          # Update README section between markers
+          awk -v models="$MODELS" '
+            /^## Free Models \(Current\)/ {
+              print
+              getline  # skip empty line
+              print ""
+              print models
+              # Skip old model list until next section
+              while ((getline line) > 0 && line !~ /^## /) {}
+              print ""
+              print line
+              next
+            }
+            { print }
+          ' README.md > README.md.tmp && mv README.md.tmp README.md
+
       - name: Check for changes
         id: changed
         run: |
@@ -57,7 +81,7 @@ jobs:
         run: |
           git config user.name "github-actions"
           git config user.email "github-actions@github.com"
-          git add zen-free-models.json .stagehand-cache
+          git add zen-free-models.json .stagehand-cache README.md
           git commit -m "Update free Zen models - $(date -u +%Y-%m-%d)"
           git push
 

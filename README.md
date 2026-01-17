@@ -6,248 +6,216 @@ Automatically sync your local OpenCode configuration with only free Zen models.
 
 This system has two parts:
 
-1. **Remote scraper** (GitHub Action): Runs daily to scrape OpenCode Zen docs for free models and publishes a JSON file
-2. **Local sync**: Fetches the JSON and patches your `~/.config/opencode/opencode.json` to use only free models
+1. **Remote scraper** (GitHub Actions): Runs daily to scrape OpenCode Zen docs for free models and publishes `zen-free-models.json`
+2. **Local sync** (shell script): Fetches the JSON and updates your OpenCode config to whitelist only free models
+
+## Architecture
+
+```mermaid
+flowchart TB
+    subgraph GitHub ["GitHub (Daily)"]
+        GA[GitHub Actions]
+        API[OpenCode API<br/>/zen/v1/models]
+        DOCS[OpenCode Docs<br/>Pricing Table]
+        JSON[zen-free-models.json]
+
+        GA -->|1. Fetch model IDs| API
+        GA -->|2. Scrape free models| DOCS
+        GA -->|3. Match & commit| JSON
+    end
+
+    subgraph Local ["Local Machine"]
+        ZSH[~/.zshrc<br/>opencode wrapper]
+        SYNC[sync.sh]
+        CACHE[~/.cache/zen-free-models<br/>12-hour TTL]
+        CONFIG[~/.config/opencode<br/>opencode.json]
+        OC[OpenCode CLI]
+
+        ZSH -->|1. User runs 'opencode'| SYNC
+        SYNC -->|2. Check cache age| CACHE
+        SYNC -->|3. Fetch if stale| GHAPI
+        SYNC -->|4. Update whitelist| CONFIG
+        ZSH -->|5. Launch| OC
+    end
+
+    GHAPI[GitHub API]
+    JSON -.->|serves| GHAPI
+
+    style JSON fill:#1a1a2e,stroke:#4ade80,color:#4ade80
+    style CONFIG fill:#1a1a2e,stroke:#60a5fa,color:#60a5fa
+    style CACHE fill:#1a1a2e,stroke:#fbbf24,color:#fbbf24
+    style GA fill:#1a1a2e,stroke:#a78bfa,color:#a78bfa
+    style SYNC fill:#1a1a2e,stroke:#f472b6,color:#f472b6
+    style OC fill:#1a1a2e,stroke:#34d399,color:#34d399
+```
 
 ## Free Models (Current)
 
-Currently free Zen models:
 - `big-pickle`
-- `grok-code-fast-1`
-- `minimax-m2.1`
-- `glm-4.7`
+- `glm-4.7-free`
+- `gpt-5-nano`
+- `grok-code`
+- `minimax-m2.1-free`
 
-## Setup
+## Quick Start
 
-### 1. Create the GitHub Repository
-
-```bash
-# Initialize git repo
-git init
-
-# Add all files
-git add .
-git commit -m "Initial commit"
-
-# Create repo on GitHub, then add remote (replace with your username)
-git remote add origin https://github.com/VcDoc/zen-free-models.git
-
-# Push to main branch
-git push -u origin main
-```
-
-### 2. Enable GitHub Actions
-
-1. Go to your repo on GitHub: `https://github.com/VcDoc/zen-free-models`
-2. Click the **Actions** tab
-3. Click **I understand my workflows, go ahead and enable them** if prompted
-
-### 3. Add BROWSERBASE_API_KEY Secret
-
-1. Go to `https://browserbase.com/` and sign up/login
-2. Get your API key from: `https://browserbase.com/settings/api-keys`
-3. Add to GitHub repo secrets:
-   - Go to **Settings** > **Secrets and variables** > **Actions**
-   - Click **New repository secret**
-   - Name: `BROWSERBASE_API_KEY`
-   - Value: Your Browserbase API key
-   - Click **Add secret**
-
-### 4. Prerequisites
-
-This project uses:
-- **pnpm** for package management (automatically enforced via `packageManager` field)
-- **fnm** (Fast Node Manager) for Node version management
-- **TypeScript** for type safety
-- **Stagehand v3** for web scraping
-
-The project includes:
-- `.nvmrc` file that tells fnm to automatically use Node 20
-- `packageManager: "pnpm@10.0.0"` in package.json that uses Node's built-in Corepack
+### Option A: Clone the repo (recommended for developers)
 
 ```bash
-# Install fnm (Fast Node Manager)
-curl -fsSL https://fnm.vercel.app/install | bash
+# Clone the repo
+git clone https://github.com/VcDoc/zen-free-models.git ~/Projects/zen-free-models
 
-# Reload shell or run:
-source ~/.zshrc  # or ~/.bashrc
-
-# Install Node 20 (will auto-switch when entering this directory)
-fnm install 20
-
-# Enable Corepack (auto-manages pnpm based on packageManager field)
-corepack enable
+# Create symlink to sync script
+mkdir -p ~/.local/share/zen-free-models
+ln -sf ~/Projects/zen-free-models/scripts/sync.sh ~/.local/share/zen-free-models/sync.sh
 ```
 
-**Note:** When you enter this directory, fnm will automatically switch to Node 20 because of the `.nvmrc` file. Corepack will ensure the correct pnpm version (10.x) is used.
+This way, `git pull` updates your sync script automatically.
 
-### 5. Install Local Dependencies
+### Option B: Download script only
 
 ```bash
-# Install scraper dependencies
-cd scraper
-pnpm install
+# Create directory
+mkdir -p ~/.local/share/zen-free-models
 
-# Install local sync dependencies
-cd ../local
-pnpm install
+# Download sync script
+curl -o ~/.local/share/zen-free-models/sync.sh \
+  https://raw.githubusercontent.com/VcDoc/zen-free-models/main/scripts/sync.sh
+
+# Make executable
+chmod +x ~/.local/share/zen-free-models/sync.sh
 ```
 
-### 5. Place Wrapper in PATH
-
-The wrapper script syncs free models before launching OpenCode.
-
-**Option A: Symlink (Recommended)**
+### 2. Add shell function to ~/.zshrc
 
 ```bash
-# Find where opencode is installed
-which opencode
-# Example output: /usr/local/bin/opencode
-
-# Create symlink
-sudo ln -sf /Users/vardaanchaphekar/Projects/automations/zen-free-models/local/opencode-wrapper.sh /usr/local/bin/opencode-wrapper
-
-# Add alias to your shell config (~/.zshrc or ~/.bashrc)
-echo "alias opencode='opencode-wrapper'" >> ~/.zshrc
-source ~/.zshrc
+# opencode wrapper - syncs zen free models before launching
+opencode() {
+  ~/.local/share/zen-free-models/sync.sh 2>/dev/null
+  command opencode "$@"
+}
 ```
 
-**Option B: Add to PATH**
+Then run `source ~/.zshrc`.
 
-```bash
-# Add local directory to PATH
-echo 'export PATH="/Users/vardaanchaphekar/Projects/automations/zen-free-models/local:$PATH"' >> ~/.zshrc
-source ~/.zshrc
-
-# Then run as:
-opencode-wrapper
-```
-
-## Automatic Version Management
-
-This project uses automatic version switching for consistency:
-
-### Node.js (via fnm)
-- `.nvmrc` file contains `20`
-- fnm automatically switches to Node 20 when you enter this directory
-- Works out of the box with fnm installed
-
-### pnpm (via Corepack)
-- `packageManager: "pnpm@10.0.0"` in both `package.json` files
-- Node's built-in Corepack automatically manages pnpm version
-- Just run `corepack enable` once globally
-
-No manual version switching needed!
-
-## Usage
-
-### Normal Usage
-
-After setting up the alias or PATH:
+### 3. Use normally
 
 ```bash
 opencode
 ```
 
 The wrapper will:
-1. Fetch the latest free models from GitHub
-2. Update your `~/.config/opencode/opencode.json`
-3. Launch OpenCode with all your arguments passed through
-
-### Test Sync Without Running OpenCode
-
-To test the sync script alone:
-
-```bash
-cd local
-pnpm run sync
-```
-
-### Run Scraper Manually
-
-```bash
-cd scraper
-npm start
-```
+1. Check if cache is valid (12-hour TTL)
+2. Fetch latest free models from GitHub if needed
+3. Update `~/.config/opencode/opencode.json` with whitelist
+4. Launch OpenCode
 
 ## How It Works
 
-### Remote Scraper
+### Remote Scraper (GitHub Actions)
 
-- Runs daily at 03:00 UTC via GitHub Actions
-- Uses Stagehand v3 to scrape `https://opencode.ai/docs/zen/`
-- Extracts models with "Free" pricing from the pricing table
-- Outputs `zen-free-models.json` with:
-  - `updatedAt`: ISO timestamp
-  - `source`: URL scraped from
-  - `modelIds`: Array of free model IDs
-  - `raw`: Optional diagnostics
-- Only commits if JSON content changed
+- Runs daily at 03:00 UTC
+- Fetches model list from `https://opencode.ai/zen/v1/models` API
+- Scrapes pricing table from `https://opencode.ai/docs/zen/` using Stagehand
+- Matches free models (both input and output are "Free") to API model IDs
+- Commits `zen-free-models.json` if changed
 
 ### Local Sync Script
 
-- Fetches `zen-free-models.json` from GitHub raw URL
-- Validates JSON schema
-- Patches `~/.config/opencode/opencode.json`:
-  - Preserves all existing fields
-  - Sets `provider.opencode.models` with free model IDs
-  - Ensures `providerResolution.mode = "strict"`
-- Uses atomic write (temp file + rename)
-- Logs how many models were applied
+- Uses 12-hour cache to minimize API calls
+- Fetches from GitHub API (avoids CDN caching issues)
+- Updates `~/.config/opencode/opencode.json`:
+  - Sets `provider.opencode.whitelist` with free model IDs
+  - Preserves all other config (MCP servers, other providers, etc.)
+- If no free models available, disables the opencode provider
 
-### Wrapper Script
-
-- Finds opencode binary (supports Homebrew installation)
-- Runs sync script
-- Launches real opencode with all arguments passed through
-
-## Trigger Manual Updates
-
-To manually trigger the GitHub Actions workflow:
-
-1. Go to **Actions** tab on GitHub
-2. Select **Update Zen Free Models** workflow
-3. Click **Run workflow** > **Run workflow**
-
-## Troubleshooting
-
-### Wrapper says "opencode binary not found"
-
-```bash
-# Check if opencode is installed
-which opencode
-
-# If not found, install via Homebrew
-brew install opencode
-```
-
-### Sync fails to fetch from GitHub
-
-- Check your internet connection
-- Verify the repo URL in `local/sync-opencode-zen-free.ts` matches your actual repo
-- Ensure the `zen-free-models.json` file exists in the repo
-
-### GitHub Action fails
-
-- Check the **Actions** tab for error logs
-- Verify `BROWSERBASE_API_KEY` secret is set correctly
-- Ensure the `zen-free-models.json` can be committed (not in .gitignore)
-
-## File Structure
+## Repository Structure
 
 ```
 zen-free-models/
 ├── .github/workflows/
-│   └── update-zen-free-models.yml    # GitHub Action
+│   └── update-zen-free-models.yml   # Daily scraper workflow
 ├── scraper/
-│   ├── src/index.ts                 # Stagehand scraper
+│   ├── src/
+│   │   ├── index.ts                 # Stagehand scraper
+│   │   └── index.test.ts            # Output validation tests
 │   ├── package.json
 │   └── tsconfig.json
-├── local/
-│   ├── sync-opencode-zen-free.ts     # Local sync script
-│   ├── opencode-wrapper.sh           # Wrapper script
-│   ├── package.json
-│   └── tsconfig.json
-├── zen-free-models.json            # Generated (don't edit manually)
-└── README.md                      # This file
+├── scripts/
+│   └── sync.sh                      # Local sync script (download this)
+├── zen-free-models.json             # Generated output (don't edit)
+└── README.md
 ```
+
+## For Developers
+
+### Prerequisites
+
+- Node.js 20+ (use fnm with `.nvmrc`)
+- pnpm 10+ (via Corepack)
+- Browserbase account (for Stagehand)
+- OpenAI API key (for Stagehand's LLM extraction)
+
+### Run Scraper Locally
+
+```bash
+# Install dependencies
+pnpm install
+
+# Set environment variables
+export BROWSERBASE_API_KEY=your_key
+export BROWSERBASE_PROJECT_ID=your_project_id
+export OPENAI_API_KEY=your_openai_key
+
+# Run scraper
+pnpm scrape
+
+# Run tests
+pnpm test
+```
+
+### GitHub Actions Secrets Required
+
+Add these secrets to your repository:
+
+| Secret | Description |
+|--------|-------------|
+| `BROWSERBASE_API_KEY` | Browserbase API key |
+| `BROWSERBASE_PROJECT_ID` | Browserbase project ID |
+| `OPENAI_API_KEY` | OpenAI API key for Stagehand extraction |
+
+### Trigger Manual Update
+
+1. Go to **Actions** tab on GitHub
+2. Select **Update Zen Free Models** workflow
+3. Click **Run workflow**
+
+## Troubleshooting
+
+### Models not updating
+
+```bash
+# Clear local cache
+rm -f ~/.cache/zen-free-models/models.json
+
+# Run opencode again
+opencode
+```
+
+### Check current config
+
+```bash
+cat ~/.config/opencode/opencode.json | jq '.provider.opencode'
+```
+
+### Verify models available
+
+```bash
+opencode models opencode
+```
+
+### GitHub Action fails
+
+- Check Actions tab for error logs
+- Verify all secrets are set correctly
+- Ensure OpenCode Zen docs page structure hasn't changed
