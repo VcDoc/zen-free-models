@@ -7,7 +7,6 @@ on:
 
 permissions:
   contents: write
-  issues: write
 
 jobs:
   update-models:
@@ -87,38 +86,3 @@ jobs:
           git add zen-free-models.json .stagehand-cache README.md
           git commit -m "Update free Zen models - $(date -u +%Y-%m-%d)"
           git push
-
-  notify-on-failure:
-    runs-on: ubuntu-latest
-    needs: update-models
-    if: failure()
-    steps:
-      - name: Create failure issue
-        uses: actions/github-script@v7
-        with:
-          script: |
-            const title = 'Scraper failed - ' + new Date().toISOString().split('T')[0];
-            const runUrl = context.serverUrl + '/' + context.repo.owner + '/' + context.repo.repo + '/actions/runs/' + context.runId;
-            const body = 'The daily Zen free models scrape failed.\n\n' +
-              '**Workflow run:** ' + runUrl + '\n\n' +
-              'Please investigate the logs and fix the issue.';
-
-            // Check if an issue with this title already exists
-            const { data: issues } = await github.rest.issues.listForRepo({
-              owner: context.repo.owner,
-              repo: context.repo.repo,
-              state: 'open',
-              labels: 'scraper-failure'
-            });
-
-            const existingIssue = issues.find(issue => issue.title === title);
-
-            if (!existingIssue) {
-              await github.rest.issues.create({
-                owner: context.repo.owner,
-                repo: context.repo.repo,
-                title: title,
-                labels: ['scraper-failure'],
-                body: body
-              });
-            }
