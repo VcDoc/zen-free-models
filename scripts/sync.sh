@@ -11,7 +11,7 @@ CONF="$HOME/.config/opencode/opencode.json"
 MAX_AGE="${ZEN_CACHE_MAX_AGE:-43200}"
 URL="https://api.github.com/repos/VcDoc/zen-free-models/contents/zen-free-models.json"
 
-cleanup() { rm -f "$LOCK" 2>/dev/null; }
+cleanup() { rmdir "$LOCK" 2>/dev/null; }
 
 lock() {
   local wait=0
@@ -92,7 +92,7 @@ if [[ -f "$CACHE" ]]; then
   [[ $age -lt $MAX_AGE ]] && exit 0
 fi
 
-resp=$(curl -sf -H "Accept: application/vnd.github.v3+json" "$URL") || { echo "Warning: Fetch failed - check connectivity or cache" >&2; exit 0; }
+resp=$(curl -sf -H "User-Agent: zen-free-models-sync" -H "Accept: application/vnd.github.v3+json" "$URL") || { echo "Warning: Fetch failed - check connectivity or cache" >&2; exit 0; }
 [[ -z "$resp" ]] && { echo "Warning: Empty response - check connectivity or cache" >&2; exit 0; }
 
 if command -v jq &>/dev/null; then

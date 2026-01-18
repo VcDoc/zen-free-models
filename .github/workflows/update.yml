@@ -28,22 +28,12 @@ jobs:
       - name: Setup pnpm
         uses: pnpm/action-setup@v4
         with:
-          package_json_file: 'scraper/package.json'
+          package_json_file: 'package.json'
 
       - name: Install dependencies
-        working-directory: ./scraper
         run: pnpm install
 
-      - name: Restore Stagehand cache
-        uses: actions/cache@v4
-        with:
-          path: .stagehand-cache
-          key: stagehand-cache-${{ runner.os }}-${{ hashFiles('scraper/src/**/*.ts') }}
-          restore-keys: |
-            stagehand-cache-${{ runner.os }}-
-
       - name: Run scraper
-        working-directory: ./scraper
         env:
           BROWSERBASE_API_KEY: ${{ secrets.BROWSERBASE_API_KEY }}
           BROWSERBASE_PROJECT_ID: ${{ secrets.BROWSERBASE_PROJECT_ID }}
@@ -79,7 +69,6 @@ jobs:
       - name: Check for changes
         id: changed
         run: |
-          # Check both the output JSON and the cache
           git add -A
           git diff --cached --quiet && echo "changed=false" >> $GITHUB_OUTPUT || echo "changed=true" >> $GITHUB_OUTPUT
 
@@ -88,6 +77,6 @@ jobs:
         run: |
           git config user.name "github-actions"
           git config user.email "github-actions@github.com"
-          git add zen-free-models.json .stagehand-cache README.md
+          git add zen-free-models.json README.md
           git commit -m "Update free Zen models - $(date -u +%Y-%m-%d)"
           git push

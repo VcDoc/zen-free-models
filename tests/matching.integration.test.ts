@@ -11,7 +11,7 @@ import * as path from "node:path";
 import { matchModelsWithLLM } from "../src/matching/index.js";
 
 const __dirname = path.dirname(new URL(import.meta.url).pathname);
-const OUTPUT_FILE = path.join(__dirname, "../../zen-free-models.json");
+const OUTPUT_FILE = path.join(__dirname, "../zen-free-models.json");
 
 // Load current free models from output file as baseline
 function loadExpectedModels(): string[] {

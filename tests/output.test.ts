@@ -7,7 +7,7 @@ import { fileURLToPath } from "node:url";
 import { OutputSchema, type Output } from "../src/utils/types.js";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
-const FILE = path.join(__dirname, "../../zen-free-models.json");
+const FILE = path.join(__dirname, "../zen-free-models.json");
 
 let cache: Output | null = null;
 

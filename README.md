@@ -72,11 +72,11 @@ flowchart TB
 
 ```bash
 # Clone the repo
-git clone https://github.com/VcDoc/zen-free-models.git ~/Projects/zen-free-models
+git clone https://github.com/VcDoc/zen-free-models.git ~/Developer/zen-free-models
 
 # Create symlink to sync script
 mkdir -p ~/.local/share/zen-free-models
-ln -sf ~/Projects/zen-free-models/scripts/sync.sh ~/.local/share/zen-free-models/sync.sh
+ln -sf ~/Developer/zen-free-models/scripts/sync.sh ~/.local/share/zen-free-models/sync.sh
 ```
 
 This way, `git pull` updates your sync script automatically.
