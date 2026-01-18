@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-01-18T03:31:36.455Z",
+  "updatedAt": "2026-01-18T05:23:15.763Z",
   "source": "https://opencode.ai/docs/zen/",
   "modelIds": [
     "big-pickle",
@@ -10,7 +10,7 @@
   ],
   "raw": {
     "totalModelsFound": 28,
-    "scrapeTimestamp": 1768707096455,
+    "scrapeTimestamp": 1768713795763,
     "allModels": [
       {
         "modelId": "internal-opus",
