@@ -2,7 +2,7 @@ name: Update Zen Free Models
 
 on:
   schedule:
-    - cron: '0 5 * * *'  # 05:00 UTC daily
+    - cron: "0 5 * * *" # 05:00 UTC daily
   workflow_dispatch:
 
 # Prevent multiple simultaneous runs from creating conflicting commits
@@ -23,12 +23,12 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version-file: '.nvmrc'
+          node-version-file: ".nvmrc"
 
       - name: Setup pnpm
         uses: pnpm/action-setup@v4
         with:
-          package_json_file: 'package.json'
+          package_json_file: "package.json"
 
       - name: Install dependencies
         run: pnpm install
@@ -64,6 +64,32 @@ jobs:
 
             fs.writeFileSync('README.md', readme);
             console.log('Updated README with', data.modelIds.length, 'models');
+          "
+
+      - name: Generate Job Summary
+        run: |
+          node -e "
+            const fs = require('fs');
+            const data = JSON.parse(fs.readFileSync('zen-free-models.json', 'utf-8'));
+            
+            const models = data.raw.allModels
+              .map(m => ({
+                name: m.modelId.replace(/-/g, ' ').replace(/\b\w/g, c => c.toUpperCase()), // Heuristic display name
+                slug: m.modelId,
+                isFree: m.isFree
+              }))
+              .sort((a, b) => b.isFree - a.isFree);
+
+            let summary = '### 🚀 OpenCode Zen Free Models Sync Summary\n\n';
+            summary += '| Model Name | Model Slug | Free? |\n';
+            summary += '| :--- | :--- | :---: |\n';
+            
+            for (const m of models) {
+              const icon = m.isFree ? '✅' : '❌';
+              summary += '| ' + m.name + ' | \`' + m.slug + '\` | ' + icon + ' |\n';
+            }
+
+            fs.appendFileSync(process.env.GITHUB_STEP_SUMMARY, summary);
           "
 
       - name: Check for changes

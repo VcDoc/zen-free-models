@@ -5,7 +5,7 @@ import { config } from "../utils/config.js";
 import { logger } from "../utils/logger.js";
 
 const NORM_REGEX = /[^a-z0-9.]/g;
-const norm = (s: string) => s.toLowerCase().replace(NORM_REGEX, "");
+const norm = (s: string): string => s.toLowerCase().replace(NORM_REGEX, "");
 
 /** Extract significant tokens from a string (numbers, words 2+ chars) */
 function extractTokens(s: string): Set<string> {
@@ -76,10 +76,11 @@ function matchWithNormalization(names: string[], maps: IdMaps): string[] {
   return [...result];
 }
 
-const LLMResponseSchema = z.object({
-  matches: z.array(z.object({ displayName: z.string(), apiId: z.string() })),
-});
-const LLMArraySchema = z.array(z.object({ displayName: z.string(), apiId: z.string() }));
+const LLMResponseSchema = z.union([
+  z.object({ matches: z.array(z.object({ displayName: z.string(), apiId: z.string() })) }),
+  z.array(z.object({ displayName: z.string(), apiId: z.string() })),
+  z.record(z.string(), z.array(z.object({ displayName: z.string(), apiId: z.string() }))),
+]);
 
 function validate(apiIds: string[], names: string[]): void {
   if (!Array.isArray(apiIds)) throw new Error("apiIds must be an array");
@@ -100,29 +101,42 @@ export function matchModels(apiIds: string[], names: string[]): string[] {
 }
 
 function parseLLMResponse(content: string): Array<{ displayName: string; apiId: string }> {
-  let parsed: unknown;
   try {
-    parsed = JSON.parse(content);
+    const parsed = JSON.parse(content);
+    const result = LLMResponseSchema.safeParse(parsed);
+
+    if (!result.success) {
+      logger.warn("LLM response format unknown:", content.substring(0, 200));
+      return [];
+    }
+
+    const data = result.data;
+
+    // Case 1: { matches: [...] }
+    if (!Array.isArray(data) && "matches" in data) {
+      return data.matches;
+    }
+
+    // Case 2: [...]
+    if (Array.isArray(data)) {
+      return data;
+    }
+
+    // Case 3: { "someKey": [...] }
+    const keys = Object.keys(data);
+    if (keys.length > 0) {
+      const firstKey = keys[0]!;
+      const nested = data[firstKey];
+      if (Array.isArray(nested)) {
+        return nested;
+      }
+    }
+
+    return [];
   } catch {
     logger.warn("Failed to parse LLM response:", content.substring(0, 200));
     return [];
   }
-
-  const objResult = LLMResponseSchema.safeParse(parsed);
-  if (objResult.success) return objResult.data.matches;
-
-  const arrResult = LLMArraySchema.safeParse(parsed);
-  if (arrResult.success) return arrResult.data;
-
-  if (typeof parsed === "object" && parsed !== null) {
-    for (const key of Object.keys(parsed as Record<string, unknown>)) {
-      const nested = LLMArraySchema.safeParse((parsed as Record<string, unknown>)[key]);
-      if (nested.success) return nested.data;
-    }
-  }
-
-  logger.warn("LLM response format unknown:", content.substring(0, 200));
-  return [];
 }
 
 function isRetryable(err: unknown): boolean {

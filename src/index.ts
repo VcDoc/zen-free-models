@@ -42,7 +42,7 @@ async function withRetry<T>(
   for (let attempt = 1; attempt <= maxRetries; attempt++) {
     try {
       return await fn();
-    } catch (error) {
+    } catch (error: unknown) {
       lastError = error instanceof Error ? error : new Error(String(error));
       if (error instanceof NonRetryableError) throw error;
 
@@ -145,8 +145,8 @@ async function main(): Promise<void> {
 
     fs.writeFileSync(config.outputPath, JSON.stringify(output, null, 2));
     logger.info(`Wrote output to ${config.outputPath}`);
-  } catch (error) {
-    logger.error("Error during scraping:", error instanceof Error ? error.message : error);
+  } catch (error: unknown) {
+    logger.error("Error during scraping:", error);
     process.exit(1);
   }
 }

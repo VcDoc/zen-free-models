@@ -19,9 +19,10 @@ export default [
     },
     rules: {
       "@typescript-eslint/no-unused-vars": ["error", { argsIgnorePattern: "^_" }],
-      "@typescript-eslint/explicit-function-return-type": "off",
-      "@typescript-eslint/no-explicit-any": "warn",
+      "@typescript-eslint/explicit-function-return-type": ["error", { allowExpressions: true }],
+      "@typescript-eslint/no-explicit-any": "error",
       "@typescript-eslint/no-floating-promises": "error",
+      "no-console": "error",
       "import/order": [
         "error",
         {
@@ -33,6 +34,13 @@ export default [
       complexity: ["warn", 10],
       "max-depth": ["warn", 4],
       "max-lines-per-function": ["warn", 50],
+    },
+  },
+  {
+    // Allow console in logger and entry points
+    files: ["src/utils/logger.ts", "src/index.ts", "src/ai/index.ts"],
+    rules: {
+      "no-console": "off",
     },
   },
   {

@@ -35,7 +35,7 @@ export const logger = {
    */
   error(message: string, ...args: unknown[]): void {
     if (shouldLog("error")) {
-      console.error(`[${timestamp()}] ERROR:`, message, ...args);
+      console.error(`[${timestamp()}] ERROR:`, message, ...this.formatArgs(args));
     }
   },
 
@@ -44,7 +44,7 @@ export const logger = {
    */
   warn(message: string, ...args: unknown[]): void {
     if (shouldLog("warn")) {
-      console.warn(`[${timestamp()}] WARN:`, message, ...args);
+      console.warn(`[${timestamp()}] WARN:`, message, ...this.formatArgs(args));
     }
   },
 
@@ -53,7 +53,7 @@ export const logger = {
    */
   info(message: string, ...args: unknown[]): void {
     if (shouldLog("info")) {
-      console.log(`[${timestamp()}] INFO:`, message, ...args);
+      console.log(`[${timestamp()}] INFO:`, message, ...this.formatArgs(args));
     }
   },
 
@@ -62,7 +62,7 @@ export const logger = {
    */
   debug(message: string, ...args: unknown[]): void {
     if (shouldLog("debug")) {
-      console.log(`[${timestamp()}] DEBUG:`, message, ...args);
+      console.log(`[${timestamp()}] DEBUG:`, message, ...this.formatArgs(args));
     }
   },
 
@@ -71,7 +71,26 @@ export const logger = {
    */
   log(message: string, ...args: unknown[]): void {
     if (shouldLog("info")) {
-      console.log(message, ...args);
+      console.log(message, ...this.formatArgs(args));
     }
+  },
+
+  /**
+   * Helper to format arguments for logging.
+   */
+  formatArgs(args: unknown[]): unknown[] {
+    return args.map(arg => {
+      if (arg instanceof Error) {
+        return arg.stack || arg.message;
+      }
+      if (typeof arg === "object" && arg !== null) {
+        try {
+          return JSON.stringify(arg, null, 2);
+        } catch {
+          return arg;
+        }
+      }
+      return arg;
+    });
   },
 };

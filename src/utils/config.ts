@@ -46,7 +46,16 @@ export interface Config {
   fetchTimeoutMs: number;
   /** Current log level */
   logLevel: LogLevel;
+  /** GitHub Raw URL for the sync script (used as default source) */
+  syncScriptRemoteUrl: string;
 }
+
+/**
+ * Default GitHub Raw URL for the sync script.
+ * @internal Used for documentation and reference.
+ */
+export const SYNC_SCRIPT_REMOTE_URL =
+  "https://raw.githubusercontent.com/VcDoc/zen-free-models/main/scripts/sync.sh";
 
 /**
  * Parse log level from string.
@@ -103,6 +112,7 @@ export function loadConfig(): Config {
     stagehandCloseTimeoutMs: parseIntOrDefault(process.env.STAGEHAND_CLOSE_TIMEOUT_MS, 10000),
     fetchTimeoutMs: parseIntOrDefault(process.env.FETCH_TIMEOUT_MS, 30000),
     logLevel: parseLogLevel(process.env.LOG_LEVEL),
+    syncScriptRemoteUrl: SYNC_SCRIPT_REMOTE_URL,
   };
 }
 
