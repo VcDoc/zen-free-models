@@ -66,32 +66,6 @@ jobs:
             console.log('Updated README with', data.modelIds.length, 'models');
           "
 
-      - name: Generate Job Summary
-        run: |
-          node -e "
-            const fs = require('fs');
-            const data = JSON.parse(fs.readFileSync('zen-free-models.json', 'utf-8'));
-            
-            const models = data.raw.allModels
-              .map(m => ({
-                name: m.modelId.replace(/-/g, ' ').replace(/\b\w/g, c => c.toUpperCase()), // Heuristic display name
-                slug: m.modelId,
-                isFree: m.isFree
-              }))
-              .sort((a, b) => b.isFree - a.isFree);
-
-            let summary = '### 🚀 OpenCode Zen Free Models Sync Summary\n\n';
-            summary += '| Model Name | Model Slug | Free? |\n';
-            summary += '| :--- | :--- | :---: |\n';
-            
-            for (const m of models) {
-              const icon = m.isFree ? '✅' : '❌';
-              summary += '| ' + m.name + ' | \`' + m.slug + '\` | ' + icon + ' |\n';
-            }
-
-            fs.appendFileSync(process.env.GITHUB_STEP_SUMMARY, summary);
-          "
-
       - name: Check for changes
         id: changed
         run: |
