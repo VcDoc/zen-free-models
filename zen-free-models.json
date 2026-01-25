@@ -1,18 +1,14 @@
 {
-  "updatedAt": "2026-01-24T05:21:09.154Z",
+  "updatedAt": "2026-01-25T05:28:20.028Z",
   "source": "https://opencode.ai/docs/zen/",
   "modelIds": [
     "big-pickle",
     "gpt-5-nano"
   ],
   "raw": {
-    "totalModelsFound": 24,
-    "scrapeTimestamp": 1769232069154,
+    "totalModelsFound": 23,
+    "scrapeTimestamp": 1769318900028,
     "allModels": [
-      {
-        "modelId": "internal-opus",
-        "isFree": false
-      },
       {
         "modelId": "claude-opus-4-5",
         "isFree": false
@@ -58,10 +54,6 @@
         "isFree": false
       },
       {
-        "modelId": "gpt-5",
-        "isFree": false
-      },
-      {
         "modelId": "gpt-5.1-codex-max",
         "isFree": false
       },
@@ -70,11 +62,15 @@
         "isFree": false
       },
       {
-        "modelId": "gpt-5-codex",
+        "modelId": "gpt-5.1-codex-mini",
         "isFree": false
       },
       {
-        "modelId": "gpt-5.1-codex-mini",
+        "modelId": "gpt-5",
+        "isFree": false
+      },
+      {
+        "modelId": "gpt-5-codex",
         "isFree": false
       },
       {
