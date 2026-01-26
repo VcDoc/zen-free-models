@@ -8,9 +8,10 @@ import { config } from "./config.js";
  * Creates a promise that rejects after the specified timeout.
  */
 export function createTimeout(ms: number, operation: string): Promise<never> {
-  return new Promise((_, reject) =>
-    setTimeout(() => reject(new Error(`${operation} timed out after ${ms}ms`)), ms)
-  );
+  return new Promise((_, reject) => {
+    const timer = setTimeout(() => reject(new Error(`${operation} timed out after ${ms}ms`)), ms);
+    timer.unref?.();
+  });
 }
 
 /**
@@ -36,5 +37,17 @@ export async function withTimeout<T>(
   ms: number,
   operation: string
 ): Promise<T> {
-  return Promise.race([promise, createTimeout(ms, operation)]);
+  let timer: ReturnType<typeof setTimeout> | undefined;
+  const timeoutPromise = new Promise<never>((_, reject) => {
+    timer = setTimeout(() => reject(new Error(`${operation} timed out after ${ms}ms`)), ms);
+    timer.unref?.();
+  });
+
+  try {
+    return await Promise.race([promise, timeoutPromise]);
+  } finally {
+    if (timer) {
+      clearTimeout(timer);
+    }
+  }
 }

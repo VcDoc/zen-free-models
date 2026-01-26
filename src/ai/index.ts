@@ -3,7 +3,7 @@ import { z } from "zod";
 
 import { config } from "../utils/config.js";
 import { logger } from "../utils/logger.js";
-import { createTimeout } from "../utils/timeout.js";
+import { withTimeout } from "../utils/timeout.js";
 
 /** Schema for extracting free models from pricing table */
 export const PricingTableSchema = z.object({
@@ -43,10 +43,7 @@ export async function initStagehand(): Promise<Stagehand> {
     model: { modelName: config.stagehandModel, apiKey: process.env.OPENAI_API_KEY },
   });
 
-  await Promise.race([
-    stagehand.init(),
-    createTimeout(config.stagehandInitTimeoutMs, "Stagehand initialization"),
-  ]);
+  await withTimeout(stagehand.init(), config.stagehandInitTimeoutMs, "Stagehand initialization");
 
   const sessionId = stagehand.browserbaseSessionID;
   logger.info(
@@ -61,10 +58,7 @@ export async function initStagehand(): Promise<Stagehand> {
 /** Close a Stagehand instance with timeout */
 export async function closeStagehand(stagehand: Stagehand): Promise<void> {
   try {
-    await Promise.race([
-      stagehand.close(),
-      createTimeout(config.stagehandCloseTimeoutMs, "Stagehand close"),
-    ]);
+    await withTimeout(stagehand.close(), config.stagehandCloseTimeoutMs, "Stagehand close");
   } catch (err) {
     logger.warn("Failed to close Stagehand cleanly:", err);
   }
@@ -80,15 +74,18 @@ export async function extractFreeModels(stagehand: Stagehand): Promise<string[]>
   }
 
   logger.info(`Navigating to ${config.zenDocsUrl}...`);
-  await page.goto(config.zenDocsUrl);
-  await page.waitForLoadState("networkidle");
+  await page.goto(config.zenDocsUrl, {
+    waitUntil: "domcontentloaded",
+    timeoutMs: config.fetchTimeoutMs,
+  });
 
   logger.info("Extracting free models from pricing table...");
 
-  const extracted = await Promise.race([
+  const extracted = await withTimeout(
     stagehand.extract(EXTRACTION_PROMPT, PricingTableSchema),
-    createTimeout(config.stagehandExtractTimeoutMs, "Stagehand extraction"),
-  ]);
+    config.stagehandExtractTimeoutMs,
+    "Stagehand extraction"
+  );
 
   logger.debug("Free model names from pricing table:", extracted.freeModels);
   return extracted.freeModels;
