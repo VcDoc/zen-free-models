@@ -25,7 +25,7 @@ flowchart TB
     end
 
     subgraph Local ["Local Machine"]
-        ZSH[~/.zshrc<br/>opencode wrapper]
+        ZSH[Shell RC<br/>opencode wrapper]
         SYNC[sync.sh]
         CACHE[~/.cache/zen-free-models<br/>12-hour TTL]
         CONFIG[~/.config/opencode<br/>opencode.json]
@@ -62,7 +62,7 @@ flowchart TB
 - **macOS, Linux, or WSL**
 - **Node.js** (for JSON config updates)
 - **curl** (for fetching from GitHub API)
-- **Bash or Zsh** (for shell wrapper function)
+- **POSIX-compatible shell** (Bash, Zsh, etc.) or **Fish** (for shell wrapper function)
 
 > **WSL users:** Install dependencies with `sudo apt install nodejs curl` if not already installed.
 
@@ -97,7 +97,10 @@ chmod +x ~/.local/share/zen-free-models/sync.sh
 
 ### 2. Add shell function to your shell's rc file
 
-Add to `~/.zshrc` (Zsh) or `~/.bashrc` (Bash):
+<details>
+<summary><strong>Bash / Zsh / POSIX-compatible shells</strong></summary>
+
+Add to your shell's rc file (`~/.zshrc`, `~/.bashrc`, `~/.kshrc`, etc.):
 
 ```bash
 # opencode wrapper - syncs zen free models before launching
@@ -114,6 +117,33 @@ Then reload your shell config:
 ```bash
 source ~/.zshrc   # or source ~/.bashrc
 ```
+
+</details>
+
+<details>
+<summary><strong>Fish</strong></summary>
+
+Create `~/.config/fish/functions/opencode.fish`:
+
+```fish
+function opencode --wraps opencode --description "opencode with zen-free-models sync"
+    "$HOME/.local/share/zen-free-models/sync.sh" 2>/dev/null
+    command opencode $argv
+end
+```
+
+Create `~/.config/fish/functions/opencode-refresh.fish`:
+
+```fish
+function opencode-refresh --description "Clear zen-free-models cache and run opencode"
+    rm -f "$HOME/.cache/zen-free-models/models.json"
+    opencode $argv
+end
+```
+
+Fish auto-loads functions from `~/.config/fish/functions/`, so no `source` step is needed.
+
+</details>
 
 ### 3. Use normally
 
