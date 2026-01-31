@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-01-30T05:46:46.582Z",
+  "updatedAt": "2026-01-31T05:38:12.849Z",
   "source": "https://opencode.ai/docs/zen/",
   "modelIds": [
     "big-pickle",
@@ -9,8 +9,8 @@
     "minimax-m2.1-free"
   ],
   "raw": {
-    "totalModelsFound": 28,
-    "scrapeTimestamp": 1769752006582,
+    "totalModelsFound": 29,
+    "scrapeTimestamp": 1769837892849,
     "allModels": [
       {
         "modelId": "claude-opus-4-5",
@@ -114,6 +114,10 @@
       },
       {
         "modelId": "kimi-k2-thinking",
+        "isFree": false
+      },
+      {
+        "modelId": "trinity-large-preview-free",
         "isFree": false
       },
       {
