@@ -113,6 +113,7 @@ alias opencode-refresh='rm -f ~/.cache/zen-free-models/models.json && opencode'
 ```
 
 Then reload your shell config:
+
 ```bash
 source ~/.zshrc   # or source ~/.bashrc
 ```
@@ -151,10 +152,76 @@ opencode
 ```
 
 The wrapper will:
+
 1. Check if cache is valid (12-hour TTL)
 2. Fetch latest free models from GitHub if needed
 3. Update `~/.config/opencode/opencode.json` with whitelist
 4. Launch OpenCode
+
+## opencode-desktop: Scheduled Refresh
+
+If you mainly use the desktop app, the shell wrapper does not run automatically.
+Use a scheduler to run `sync.sh` in the background.
+
+<details>
+<summary><strong>macOS: launchd (recommended)</strong></summary>
+
+1. Link the repo LaunchAgent plist into `~/Library/LaunchAgents`:
+
+```bash
+mkdir -p "$HOME/Library/LaunchAgents"
+ln -sf "$HOME/Developer/automations/zen-free-models/launchd/com.vcdoc.zen-free-models-sync.plist" \
+  "$HOME/Library/LaunchAgents/com.vcdoc.zen-free-models-sync.plist"
+plutil -lint "$HOME/Library/LaunchAgents/com.vcdoc.zen-free-models-sync.plist"
+```
+
+If you cloned to a different directory, replace the repo path in the `ln -sf` command.
+
+2. Load and start it:
+
+```bash
+launchctl bootout gui/$(id -u) "$HOME/Library/LaunchAgents/com.vcdoc.zen-free-models-sync.plist" 2>/dev/null || true
+launchctl bootstrap gui/$(id -u) "$HOME/Library/LaunchAgents/com.vcdoc.zen-free-models-sync.plist"
+launchctl enable gui/$(id -u)/com.vcdoc.zen-free-models-sync
+launchctl kickstart -k gui/$(id -u)/com.vcdoc.zen-free-models-sync
+```
+
+3. Verify status/logs:
+
+```bash
+launchctl print gui/$(id -u)/com.vcdoc.zen-free-models-sync
+tail -n 50 "$HOME/Developer/automations/zen-free-models/.runtime/launchd.err.log"
+```
+
+Logs are written to `<repo>/.runtime/launchd.log` and `<repo>/.runtime/launchd.err.log` (gitignored).
+
+</details>
+
+<details>
+<summary><strong>Linux/WSL: cron</strong></summary>
+
+1. Open your crontab:
+
+```bash
+crontab -e
+```
+
+2. Add this line (every 6 hours):
+
+```cron
+0 */6 * * * ZEN_CACHE_MAX_AGE=21600 $HOME/.local/share/zen-free-models/sync.sh >/dev/null 2>&1
+```
+
+3. Verify:
+
+```bash
+crontab -l
+```
+
+> `ZEN_CACHE_MAX_AGE` is in seconds. `21600` = 6 hours.
+> If unset, `sync.sh` defaults to 12 hours (`43200`).
+
+</details>
 
 ## How It Works
 
@@ -193,6 +260,9 @@ zen-free-models/
 │   └── tsconfig.json
 ├── scripts/
 │   └── sync.sh                      # Local sync script (download this)
+├── launchd/
+│   └── com.vcdoc.zen-free-models-sync.plist  # macOS LaunchAgent template
+├── .runtime/                        # Runtime logs (gitignored)
 ├── LICENSE                          # MIT License
 ├── zen-free-models.json             # Generated output (don't edit)
 └── README.md
@@ -229,11 +299,11 @@ pnpm test
 
 Add these as **Repository secrets** (Settings → Secrets and variables → Actions → Repository secrets):
 
-| Secret | Description |
-|--------|-------------|
-| `BROWSERBASE_API_KEY` | Browserbase API key |
-| `BROWSERBASE_PROJECT_ID` | Browserbase project ID |
-| `OPENAI_API_KEY` | OpenAI API key for Stagehand extraction |
+| Secret                   | Description                             |
+| ------------------------ | --------------------------------------- |
+| `BROWSERBASE_API_KEY`    | Browserbase API key                     |
+| `BROWSERBASE_PROJECT_ID` | Browserbase project ID                  |
+| `OPENAI_API_KEY`         | OpenAI API key for Stagehand extraction |
 
 ### Trigger Manual Update
 
@@ -279,11 +349,13 @@ opencode models opencode
 ### Browserbase Errors
 
 **"Browserbase quota exceeded"**
+
 - Check your Browserbase dashboard for usage limits
 - The scraper uses one session per run (daily)
 - Consider upgrading your plan if hitting limits
 
 **"Session failed to initialize"**
+
 - Verify `BROWSERBASE_API_KEY` and `BROWSERBASE_PROJECT_ID` are correct
 - Check Browserbase status page for outages
 - Try running again (transient errors are retried automatically)
@@ -291,24 +363,29 @@ opencode models opencode
 ### OpenAI API Errors
 
 **"OPENAI_API_KEY environment variable is not set"**
+
 - Ensure you've added `OPENAI_API_KEY` to your `.env` file or GitHub secrets
 - The LLM is used for both Stagehand extraction and model name matching
 
 **"OpenAI API error (429)"**
+
 - Rate limit exceeded - the scraper will retry with exponential backoff
 - If persistent, check your OpenAI usage limits
 
 **"OpenAI API error (401)"**
+
 - Invalid API key - verify your key is correct and active
 
 ### LLM Matching Issues
 
 **"LLM returned no matches"**
+
 - The scraper will use known mappings as fallback
 - Check if model names have changed on the pricing page
 - Consider adding explicit mappings to `MAPPINGS` in `scraper/src/matching/index.ts`
 
 **LLM call failed / Skipped unmatched models**
+
 - Check your OPENAI_API_KEY is valid and has sufficient quota
 - The scraper will continue with models that were successfully matched via mappings
 - Consider adding explicit mappings for models that fail consistently
@@ -317,17 +394,20 @@ opencode models opencode
 ### Sync Script Issues
 
 **"Neither jq nor Node.js available"**
+
 - Install either `jq` or Node.js for JSON parsing
 - On Ubuntu: `sudo apt install nodejs` or `sudo apt install jq`
 - On macOS: `brew install node` or `brew install jq`
 
 **Cache always refreshing**
+
 - Check if `ZEN_CACHE_MAX_AGE` is set too low
 - Default is 12 hours (43200 seconds)
 
 ### API Rate Limits
 
 The sync script uses the GitHub API without authentication:
+
 - **Limit:** 60 requests/hour per IP
 - **Default cache:** 12 hours (well within limits)
 - Increase cache time if hitting limits: `export ZEN_CACHE_MAX_AGE=86400` (24 hours)
@@ -335,6 +415,7 @@ The sync script uses the GitHub API without authentication:
 ## Code Quality
 
 This project includes automated code quality checks:
+
 - **ESLint**: Linting with TypeScript support
 - **Prettier**: Code formatting
 - **npm audit**: Automated vulnerability scanning

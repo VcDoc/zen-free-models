@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+  <key>Label</key>
+  <string>com.vcdoc.zen-free-models-sync</string>
+
+  <key>ProgramArguments</key>
+  <array>
+    <string>/bin/bash</string>
+    <string>-lc</string>
+    <string>SCRIPT="$HOME/.local/share/zen-free-models/sync.sh"; TARGET="$(readlink "$SCRIPT" 2&gt;/dev/null || true)"; if [[ -n "$TARGET" &amp;&amp; -f "$TARGET" ]]; then REPO_ROOT="$(dirname "$(dirname "$TARGET")")"; LOG_DIR="$REPO_ROOT/.runtime"; else LOG_DIR="$HOME/.cache/zen-free-models"; fi; mkdir -p "$LOG_DIR"; "$SCRIPT" &gt;&gt; "$LOG_DIR/launchd.log" 2&gt;&gt; "$LOG_DIR/launchd.err.log"</string>
+  </array>
+
+  <key>EnvironmentVariables</key>
+  <dict>
+    <key>ZEN_CACHE_MAX_AGE</key>
+    <string>21600</string>
+  </dict>
+
+  <key>RunAtLoad</key>
+  <true/>
+
+  <key>StartInterval</key>
+  <integer>21600</integer>
+
+</dict>
+</plist>
