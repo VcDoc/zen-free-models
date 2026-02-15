@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-02-14T05:43:57.354Z",
+  "updatedAt": "2026-02-15T05:56:01.357Z",
   "source": "https://opencode.ai/docs/zen/",
   "modelIds": [
     "big-pickle",
@@ -8,8 +8,8 @@
     "minimax-m2.5-free"
   ],
   "raw": {
-    "totalModelsFound": 31,
-    "scrapeTimestamp": 1771047837354,
+    "totalModelsFound": 33,
+    "scrapeTimestamp": 1771134961357,
     "allModels": [
       {
         "modelId": "claude-opus-4-6",
@@ -84,6 +84,10 @@
         "isFree": true
       },
       {
+        "modelId": "glm-5",
+        "isFree": false
+      },
+      {
         "modelId": "glm-4.7",
         "isFree": false
       },
@@ -92,12 +96,16 @@
         "isFree": false
       },
       {
-        "modelId": "minimax-m2.1",
+        "modelId": "minimax-m2.5",
         "isFree": false
       },
       {
         "modelId": "minimax-m2.5-free",
         "isFree": true
+      },
+      {
+        "modelId": "minimax-m2.1",
+        "isFree": false
       },
       {
         "modelId": "minimax-m2.1-free",
