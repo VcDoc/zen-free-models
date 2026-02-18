@@ -52,6 +52,7 @@ flowchart TB
 ## Free Models (Current)
 
 - `big-pickle`
+- `glm-5-free`
 - `gpt-5-nano`
 - `kimi-k2.5-free`
 - `minimax-m2.5-free`

@@ -1,15 +1,16 @@
 {
-  "updatedAt": "2026-02-17T05:57:25.486Z",
+  "updatedAt": "2026-02-18T06:01:08.315Z",
   "source": "https://opencode.ai/docs/zen/",
   "modelIds": [
     "big-pickle",
+    "glm-5-free",
     "gpt-5-nano",
     "kimi-k2.5-free",
     "minimax-m2.5-free"
   ],
   "raw": {
-    "totalModelsFound": 34,
-    "scrapeTimestamp": 1771307845486,
+    "totalModelsFound": 33,
+    "scrapeTimestamp": 1771394468315,
     "allModels": [
       {
         "modelId": "claude-opus-4-6",
@@ -24,11 +25,15 @@
         "isFree": false
       },
       {
-        "modelId": "claude-sonnet-4",
+        "modelId": "claude-sonnet-4-6",
         "isFree": false
       },
       {
         "modelId": "claude-sonnet-4-5",
+        "isFree": false
+      },
+      {
+        "modelId": "claude-sonnet-4",
         "isFree": false
       },
       {
@@ -112,10 +117,6 @@
         "isFree": false
       },
       {
-        "modelId": "alpha-kimi-k2.5",
-        "isFree": false
-      },
-      {
         "modelId": "kimi-k2.5",
         "isFree": false
       },
@@ -136,16 +137,12 @@
         "isFree": false
       },
       {
-        "modelId": "glm-4.7-free",
-        "isFree": false
-      },
-      {
         "modelId": "big-pickle",
         "isFree": true
       },
       {
-        "modelId": "alpha-g5",
-        "isFree": false
+        "modelId": "glm-5-free",
+        "isFree": true
       }
     ]
   }
