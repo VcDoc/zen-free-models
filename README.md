@@ -196,6 +196,8 @@ tail -n 50 "$HOME/Developer/automations/zen-free-models/.runtime/launchd.err.log
 
 Logs are written to `<repo>/.runtime/launchd.log` and `<repo>/.runtime/launchd.err.log` (gitignored).
 
+The agent runs hourly, updating the config when cache is older than 6 hours.
+
 </details>
 
 <details>
@@ -207,10 +209,10 @@ Logs are written to `<repo>/.runtime/launchd.log` and `<repo>/.runtime/launchd.e
 crontab -e
 ```
 
-2. Add this line (every 6 hours):
+2. Add this line (hourly):
 
 ```cron
-0 */6 * * * ZEN_CACHE_MAX_AGE=21600 $HOME/.local/share/zen-free-models/sync.sh >/dev/null 2>&1
+0 * * * * ZEN_CACHE_MAX_AGE=21600 $HOME/.local/share/zen-free-models/sync.sh >/dev/null 2>&1
 ```
 
 3. Verify:
@@ -219,8 +221,7 @@ crontab -e
 crontab -l
 ```
 
-> `ZEN_CACHE_MAX_AGE` is in seconds. `21600` = 6 hours.
-> If unset, `sync.sh` defaults to 12 hours (`43200`).
+> Runs hourly, updates config if cache is older than 6 hours (`ZEN_CACHE_MAX_AGE=21600`).
 
 </details>
 
