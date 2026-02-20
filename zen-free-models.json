@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-02-19T05:58:51.179Z",
+  "updatedAt": "2026-02-20T05:53:21.102Z",
   "source": "https://opencode.ai/docs/zen/",
   "modelIds": [
     "big-pickle",
@@ -9,8 +9,8 @@
     "minimax-m2.5-free"
   ],
   "raw": {
-    "totalModelsFound": 33,
-    "scrapeTimestamp": 1771480731179,
+    "totalModelsFound": 34,
+    "scrapeTimestamp": 1771566801102,
     "allModels": [
       {
         "modelId": "claude-opus-4-6",
@@ -42,6 +42,10 @@
       },
       {
         "modelId": "claude-haiku-4-5",
+        "isFree": false
+      },
+      {
+        "modelId": "gemini-3.1-pro",
         "isFree": false
       },
       {
