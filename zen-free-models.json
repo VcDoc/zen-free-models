@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-02-20T05:53:21.102Z",
+  "updatedAt": "2026-02-21T05:41:11.603Z",
   "source": "https://opencode.ai/docs/zen/",
   "modelIds": [
     "big-pickle",
@@ -9,8 +9,8 @@
     "minimax-m2.5-free"
   ],
   "raw": {
-    "totalModelsFound": 34,
-    "scrapeTimestamp": 1771566801102,
+    "totalModelsFound": 37,
+    "scrapeTimestamp": 1771652471603,
     "allModels": [
       {
         "modelId": "claude-opus-4-6",
@@ -118,6 +118,18 @@
       },
       {
         "modelId": "minimax-m2.1-free",
+        "isFree": false
+      },
+      {
+        "modelId": "alpha-gpt-5.3-codex",
+        "isFree": false
+      },
+      {
+        "modelId": "alpha-gpt-5.4",
+        "isFree": false
+      },
+      {
+        "modelId": "alpha-kimi-k2.5",
         "isFree": false
       },
       {
