@@ -1,5 +1,7 @@
 # OpenCode Zen Free Models Sync
 
+> ⚠️ **Deprecation Notice**: We have since subscribed to OpenCode Black and are no longer using this project. This repository will not be actively maintained unless notified of an error.
+
 Automatically sync your local OpenCode configuration with only free Zen models.
 
 ## Overview
