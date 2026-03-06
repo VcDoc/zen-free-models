@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-03-05T05:47:19.606Z",
+  "updatedAt": "2026-03-06T05:44:19.128Z",
   "source": "https://opencode.ai/docs/zen/",
   "modelIds": [
     "big-pickle",
@@ -7,8 +7,8 @@
     "minimax-m2.5-free"
   ],
   "raw": {
-    "totalModelsFound": 32,
-    "scrapeTimestamp": 1772689639606,
+    "totalModelsFound": 35,
+    "scrapeTimestamp": 1772775859128,
     "allModels": [
       {
         "modelId": "claude-opus-4-6",
@@ -52,6 +52,18 @@
       },
       {
         "modelId": "gemini-3-flash",
+        "isFree": false
+      },
+      {
+        "modelId": "gpt-5.4-pro",
+        "isFree": false
+      },
+      {
+        "modelId": "gpt-5.4",
+        "isFree": false
+      },
+      {
+        "modelId": "gpt-5.3-codex-spark",
         "isFree": false
       },
       {
