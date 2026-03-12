@@ -55,7 +55,9 @@ flowchart TB
 
 - `big-pickle`
 - `gpt-5-nano`
+- `mimo-v2-flash-free`
 - `minimax-m2.5-free`
+- `nemotron-3-super-free`
 
 ## Requirements
 
