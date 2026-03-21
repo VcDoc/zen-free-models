@@ -1,6 +1,6 @@
 # OpenCode Zen Free Models Sync
 
-> ⚠️ **Deprecation Notice**: We have since subscribed to OpenCode Black and are no longer using this project. This repository will not be actively maintained unless notified of an error.
+> **Maintenance:** This repository is actively maintained. It keeps **OpenCode Zen** limited to free models via `provider.opencode.whitelist`. **OpenCode Go** is a separate provider in OpenCode (subscribe and connect there for Go models); this project does not manage Go and no extra config is required for Go to receive new subscription models.
 
 Automatically sync your local OpenCode configuration with only free Zen models.
 
