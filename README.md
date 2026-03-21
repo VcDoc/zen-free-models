@@ -1,8 +1,12 @@
 # OpenCode Zen Free Models Sync
 
-> **Maintenance:** This repository is actively maintained. It keeps **OpenCode Zen** limited to free models via `provider.opencode.whitelist`. **OpenCode Go** is a separate provider in OpenCode (subscribe and connect there for Go models); this project does not manage Go and no extra config is required for Go to receive new subscription models.
+> **Status:** This repository is **not maintained** and **will not be maintained** unless OpenCode Zen changes how this works. Maintenance may resume if Zen stops exposing **only free models by default** when no Zen API key is configured or the Zen provider is not logged in—making a config whitelist relevant again for typical use.
 
-Automatically sync your local OpenCode configuration with only free Zen models.
+> **Zen behavior:** As of now, if you do not use a Zen API key and are not logged into the Zen provider, OpenCode only surfaces the **free** Zen models. In that situation, syncing `provider.opencode.whitelist` here is largely redundant.
+
+> **OpenCode Go** is a separate provider (subscribe and connect there for Go models). This project does not manage Go.
+
+Automatically sync your local OpenCode configuration with only free Zen models (historical tooling; see status above).
 
 ## Overview
 
