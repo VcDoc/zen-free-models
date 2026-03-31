@@ -63,6 +63,7 @@ flowchart TB
 - `mimo-v2-pro-free`
 - `minimax-m2.5-free`
 - `nemotron-3-super-free`
+- `qwen3.6-plus-free`
 
 ## Requirements
 
