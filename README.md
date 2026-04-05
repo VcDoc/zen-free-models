@@ -59,6 +59,8 @@ flowchart TB
 
 - `big-pickle`
 - `gpt-5-nano`
+- `minimax-m2.1`
+- `minimax-m2.5`
 - `minimax-m2.5-free`
 - `nemotron-3-super-free`
 - `qwen3.6-plus-free`
