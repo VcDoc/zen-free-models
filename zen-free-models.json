@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-04-07T06:19:21.308Z",
+  "updatedAt": "2026-04-08T06:21:35.940Z",
   "source": "https://opencode.ai/docs/zen/",
   "modelIds": [
     "big-pickle",
@@ -9,8 +9,8 @@
     "qwen3.6-plus-free"
   ],
   "raw": {
-    "totalModelsFound": 39,
-    "scrapeTimestamp": 1775542761308,
+    "totalModelsFound": 40,
+    "scrapeTimestamp": 1775629295940,
     "allModels": [
       {
         "modelId": "claude-opus-4-6",
@@ -115,6 +115,10 @@
       {
         "modelId": "gpt-5-nano",
         "isFree": true
+      },
+      {
+        "modelId": "glm-5.1",
+        "isFree": false
       },
       {
         "modelId": "glm-5",
