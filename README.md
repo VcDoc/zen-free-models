@@ -61,7 +61,6 @@ flowchart TB
 - `gpt-5-nano`
 - `minimax-m2.5-free`
 - `nemotron-3-super-free`
-- `qwen3.6-plus-free`
 
 ## Requirements
 
