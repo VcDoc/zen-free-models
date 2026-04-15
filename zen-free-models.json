@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-04-14T06:53:05.989Z",
+  "updatedAt": "2026-04-15T06:54:02.817Z",
   "source": "https://opencode.ai/docs/zen/",
   "modelIds": [
     "big-pickle",
@@ -8,8 +8,8 @@
     "nemotron-3-super-free"
   ],
   "raw": {
-    "totalModelsFound": 39,
-    "scrapeTimestamp": 1776149585989,
+    "totalModelsFound": 41,
+    "scrapeTimestamp": 1776236042817,
     "allModels": [
       {
         "modelId": "claude-opus-4-6",
@@ -153,6 +153,14 @@
       },
       {
         "modelId": "kimi-k2-thinking",
+        "isFree": false
+      },
+      {
+        "modelId": "qwen3.6-plus",
+        "isFree": false
+      },
+      {
+        "modelId": "qwen3.5-plus",
         "isFree": false
       },
       {
