@@ -1,16 +1,17 @@
 {
-  "updatedAt": "2026-04-23T07:00:39.350Z",
+  "updatedAt": "2026-04-24T07:04:24.510Z",
   "source": "https://opencode.ai/docs/zen/",
   "modelIds": [
     "big-pickle",
     "gpt-5-nano",
+    "hy3-preview-free",
     "ling-2.6-flash-free",
     "minimax-m2.5-free",
     "nemotron-3-super-free"
   ],
   "raw": {
     "totalModelsFound": 41,
-    "scrapeTimestamp": 1776927639350,
+    "scrapeTimestamp": 1777014264510,
     "allModels": [
       {
         "modelId": "claude-opus-4-7",
@@ -162,7 +163,7 @@
       },
       {
         "modelId": "hy3-preview-free",
-        "isFree": false
+        "isFree": true
       },
       {
         "modelId": "ling-2.6-flash-free",
