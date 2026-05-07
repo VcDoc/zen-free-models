@@ -58,7 +58,6 @@ flowchart TB
 ## Free Models (Current)
 
 - `big-pickle`
-- `gpt-5-nano`
 - `hy3-preview-free`
 - `ling-2.6-flash-free`
 - `minimax-m2.5-free`
