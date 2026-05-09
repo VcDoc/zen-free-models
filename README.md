@@ -59,7 +59,7 @@ flowchart TB
 
 - `big-pickle`
 - `hy3-preview-free`
-- `ling-2.6-flash-free`
+- `kimi-k2.6`
 - `minimax-m2.5-free`
 - `nemotron-3-super-free`
 
