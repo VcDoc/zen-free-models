@@ -1,16 +1,16 @@
 {
-  "updatedAt": "2026-05-09T07:07:21.041Z",
+  "updatedAt": "2026-05-10T07:25:16.930Z",
   "source": "https://opencode.ai/docs/zen/",
   "modelIds": [
     "big-pickle",
-    "hy3-preview-free",
     "kimi-k2.6",
     "minimax-m2.5-free",
-    "nemotron-3-super-free"
+    "nemotron-3-super-free",
+    "trinity-large-preview-free"
   ],
   "raw": {
-    "totalModelsFound": 40,
-    "scrapeTimestamp": 1778310441041,
+    "totalModelsFound": 39,
+    "scrapeTimestamp": 1778397916930,
     "allModels": [
       {
         "modelId": "claude-opus-4-7",
@@ -161,12 +161,8 @@
         "isFree": true
       },
       {
-        "modelId": "hy3-preview-free",
-        "isFree": true
-      },
-      {
         "modelId": "trinity-large-preview-free",
-        "isFree": false
+        "isFree": true
       },
       {
         "modelId": "nemotron-3-super-free",

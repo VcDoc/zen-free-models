@@ -58,10 +58,10 @@ flowchart TB
 ## Free Models (Current)
 
 - `big-pickle`
-- `hy3-preview-free`
 - `kimi-k2.6`
 - `minimax-m2.5-free`
 - `nemotron-3-super-free`
+- `trinity-large-preview-free`
 
 ## Requirements
 
