@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-05-14T07:41:27.325Z",
+  "updatedAt": "2026-05-16T07:13:48.755Z",
   "source": "https://opencode.ai/docs/zen/",
   "modelIds": [
     "big-pickle",
@@ -9,8 +9,8 @@
     "ring-2.6-1t-free"
   ],
   "raw": {
-    "totalModelsFound": 41,
-    "scrapeTimestamp": 1778744487325,
+    "totalModelsFound": 42,
+    "scrapeTimestamp": 1778915628755,
     "allModels": [
       {
         "modelId": "claude-opus-4-7",
@@ -159,6 +159,10 @@
       {
         "modelId": "deepseek-v4-flash-free",
         "isFree": true
+      },
+      {
+        "modelId": "qwen3.6-plus-free",
+        "isFree": false
       },
       {
         "modelId": "minimax-m2.5-free",
