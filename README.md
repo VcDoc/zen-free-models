@@ -61,7 +61,6 @@ flowchart TB
 - `deepseek-v4-flash-free`
 - `minimax-m2.5-free`
 - `nemotron-3-super-free`
-- `ring-2.6-1t-free`
 
 ## Requirements
 
