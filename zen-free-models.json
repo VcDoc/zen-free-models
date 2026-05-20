@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-05-19T08:27:19.123Z",
+  "updatedAt": "2026-05-20T08:25:35.333Z",
   "source": "https://opencode.ai/docs/zen/",
   "modelIds": [
     "big-pickle",
@@ -8,8 +8,8 @@
     "nemotron-3-super-free"
   ],
   "raw": {
-    "totalModelsFound": 40,
-    "scrapeTimestamp": 1779179239123,
+    "totalModelsFound": 41,
+    "scrapeTimestamp": 1779265535333,
     "allModels": [
       {
         "modelId": "claude-opus-4-7",
@@ -41,6 +41,10 @@
       },
       {
         "modelId": "claude-haiku-4-5",
+        "isFree": false
+      },
+      {
+        "modelId": "gemini-3.5-flash",
         "isFree": false
       },
       {
