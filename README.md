@@ -59,7 +59,6 @@ flowchart TB
 
 - `big-pickle`
 - `deepseek-v4-flash-free`
-- `minimax-m2.5-free`
 - `nemotron-3-super-free`
 
 ## Requirements
