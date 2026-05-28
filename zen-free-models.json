@@ -1,14 +1,15 @@
 {
-  "updatedAt": "2026-05-27T08:38:13.784Z",
+  "updatedAt": "2026-05-28T08:41:40.027Z",
   "source": "https://opencode.ai/docs/zen/",
   "modelIds": [
     "big-pickle",
     "deepseek-v4-flash-free",
+    "mimo-v2.5-free",
     "nemotron-3-super-free"
   ],
   "raw": {
-    "totalModelsFound": 42,
-    "scrapeTimestamp": 1779871093784,
+    "totalModelsFound": 43,
+    "scrapeTimestamp": 1779957700027,
     "allModels": [
       {
         "modelId": "claude-opus-4-7",
@@ -164,6 +165,10 @@
       },
       {
         "modelId": "deepseek-v4-flash-free",
+        "isFree": true
+      },
+      {
+        "modelId": "mimo-v2.5-free",
         "isFree": true
       },
       {
