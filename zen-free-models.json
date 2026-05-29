@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-05-28T08:41:40.027Z",
+  "updatedAt": "2026-05-29T08:41:46.889Z",
   "source": "https://opencode.ai/docs/zen/",
   "modelIds": [
     "big-pickle",
@@ -8,9 +8,13 @@
     "nemotron-3-super-free"
   ],
   "raw": {
-    "totalModelsFound": 43,
-    "scrapeTimestamp": 1779957700027,
+    "totalModelsFound": 44,
+    "scrapeTimestamp": 1780044106889,
     "allModels": [
+      {
+        "modelId": "claude-opus-4-8",
+        "isFree": false
+      },
       {
         "modelId": "claude-opus-4-7",
         "isFree": false
