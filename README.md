@@ -61,6 +61,7 @@ flowchart TB
 - `deepseek-v4-flash-free`
 - `mimo-v2.5-free`
 - `nemotron-3-ultra-free`
+- `north-mini-code-free`
 
 ## Requirements
 
