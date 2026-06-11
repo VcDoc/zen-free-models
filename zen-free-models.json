@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-06-10T08:48:18.009Z",
+  "updatedAt": "2026-06-11T09:11:50.514Z",
   "source": "https://opencode.ai/docs/zen/",
   "modelIds": [
     "big-pickle",
@@ -10,7 +10,7 @@
   ],
   "raw": {
     "totalModelsFound": 48,
-    "scrapeTimestamp": 1781081298009,
+    "scrapeTimestamp": 1781169110514,
     "allModels": [
       {
         "modelId": "claude-fable-5",
