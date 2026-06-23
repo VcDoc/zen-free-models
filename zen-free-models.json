@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-06-22T10:36:46.579Z",
+  "updatedAt": "2026-06-23T08:28:40.394Z",
   "source": "https://opencode.ai/docs/zen/",
   "modelIds": [
     "big-pickle",
@@ -9,8 +9,8 @@
     "north-mini-code-free"
   ],
   "raw": {
-    "totalModelsFound": 48,
-    "scrapeTimestamp": 1782124606579,
+    "totalModelsFound": 49,
+    "scrapeTimestamp": 1782203320394,
     "allModels": [
       {
         "modelId": "claude-fable-5",
@@ -142,6 +142,10 @@
       },
       {
         "modelId": "deepseek-v4-flash",
+        "isFree": false
+      },
+      {
+        "modelId": "glm-5.2",
         "isFree": false
       },
       {
