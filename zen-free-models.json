@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-06-24T08:21:15.875Z",
+  "updatedAt": "2026-07-01T08:49:11.009Z",
   "source": "https://opencode.ai/docs/zen/",
   "modelIds": [
     "big-pickle",
@@ -9,8 +9,8 @@
     "north-mini-code-free"
   ],
   "raw": {
-    "totalModelsFound": 49,
-    "scrapeTimestamp": 1782289275875,
+    "totalModelsFound": 50,
+    "scrapeTimestamp": 1782895751009,
     "allModels": [
       {
         "modelId": "claude-fable-5",
@@ -34,6 +34,10 @@
       },
       {
         "modelId": "claude-opus-4-1",
+        "isFree": false
+      },
+      {
+        "modelId": "claude-sonnet-5",
         "isFree": false
       },
       {
@@ -157,11 +161,19 @@
         "isFree": false
       },
       {
+        "modelId": "minimax-m3",
+        "isFree": false
+      },
+      {
         "modelId": "minimax-m2.7",
         "isFree": false
       },
       {
         "modelId": "minimax-m2.5",
+        "isFree": false
+      },
+      {
+        "modelId": "kimi-k2.7-code",
         "isFree": false
       },
       {
@@ -191,14 +203,6 @@
       {
         "modelId": "mimo-v2.5-free",
         "isFree": true
-      },
-      {
-        "modelId": "qwen3.6-plus-free",
-        "isFree": false
-      },
-      {
-        "modelId": "minimax-m3-free",
-        "isFree": false
       },
       {
         "modelId": "nemotron-3-ultra-free",
