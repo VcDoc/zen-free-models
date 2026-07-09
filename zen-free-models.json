@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-07-08T07:28:16.358Z",
+  "updatedAt": "2026-07-09T08:31:09.575Z",
   "source": "https://opencode.ai/docs/zen/",
   "modelIds": [
     "big-pickle",
@@ -9,8 +9,8 @@
     "north-mini-code-free"
   ],
   "raw": {
-    "totalModelsFound": 51,
-    "scrapeTimestamp": 1783495696358,
+    "totalModelsFound": 52,
+    "scrapeTimestamp": 1783585869575,
     "allModels": [
       {
         "modelId": "claude-fable-5",
@@ -138,6 +138,10 @@
       },
       {
         "modelId": "grok-build-0.1",
+        "isFree": false
+      },
+      {
+        "modelId": "grok-4.5",
         "isFree": false
       },
       {
