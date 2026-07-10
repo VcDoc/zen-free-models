@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-07-09T08:31:09.575Z",
+  "updatedAt": "2026-07-10T08:22:00.923Z",
   "source": "https://opencode.ai/docs/zen/",
   "modelIds": [
     "big-pickle",
@@ -9,8 +9,8 @@
     "north-mini-code-free"
   ],
   "raw": {
-    "totalModelsFound": 52,
-    "scrapeTimestamp": 1783585869575,
+    "totalModelsFound": 55,
+    "scrapeTimestamp": 1783671720923,
     "allModels": [
       {
         "modelId": "claude-fable-5",
@@ -66,6 +66,18 @@
       },
       {
         "modelId": "gemini-3-flash",
+        "isFree": false
+      },
+      {
+        "modelId": "gpt-5.6-sol",
+        "isFree": false
+      },
+      {
+        "modelId": "gpt-5.6-terra",
+        "isFree": false
+      },
+      {
+        "modelId": "gpt-5.6-luna",
         "isFree": false
       },
       {
