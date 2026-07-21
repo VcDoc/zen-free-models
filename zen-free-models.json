@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-07-20T07:57:43.329Z",
+  "updatedAt": "2026-07-21T07:31:56.051Z",
   "source": "https://opencode.ai/docs/zen/",
   "modelIds": [
     "big-pickle",
@@ -9,8 +9,8 @@
     "north-mini-code-free"
   ],
   "raw": {
-    "totalModelsFound": 55,
-    "scrapeTimestamp": 1784534263329,
+    "totalModelsFound": 54,
+    "scrapeTimestamp": 1784619116051,
     "allModels": [
       {
         "modelId": "claude-fable-5",
@@ -219,10 +219,6 @@
       {
         "modelId": "mimo-v2.5-free",
         "isFree": true
-      },
-      {
-        "modelId": "hy3-free",
-        "isFree": false
       },
       {
         "modelId": "nemotron-3-ultra-free",
