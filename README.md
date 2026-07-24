@@ -60,6 +60,7 @@ flowchart TB
 - `big-pickle`
 - `deepseek-v4-flash-free`
 - `laguna-s-2.1-free`
+- `ling-3.0-flash-free`
 - `mimo-v2.5-free`
 - `nemotron-3-ultra-free`
 - `north-mini-code-free`
