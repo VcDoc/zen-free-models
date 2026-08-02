@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-08-01T07:26:29.074Z",
+  "updatedAt": "2026-08-02T07:30:47.418Z",
   "source": "https://opencode.ai/docs/zen/",
   "modelIds": [
     "big-pickle",
@@ -12,7 +12,7 @@
   ],
   "raw": {
     "totalModelsFound": 60,
-    "scrapeTimestamp": 1785569189074,
+    "scrapeTimestamp": 1785655847418,
     "allModels": [
       {
         "modelId": "claude-fable-5",
@@ -203,6 +203,10 @@
         "isFree": false
       },
       {
+        "modelId": "kimi-k3",
+        "isFree": false
+      },
+      {
         "modelId": "kimi-k2.7-code",
         "isFree": false
       },
@@ -220,10 +224,6 @@
       },
       {
         "modelId": "qwen3.5-plus",
-        "isFree": false
-      },
-      {
-        "modelId": "kimi-k3",
         "isFree": false
       },
       {
