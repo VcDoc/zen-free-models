@@ -59,12 +59,12 @@ flowchart TB
 
 - `big-pickle`
 - `deepseek-v4-flash-free`
+- `hy3-free`
 - `laguna-s-2.1-free`
 - `ling-3.0-tiny-free`
-- `longcat-2.0-free`
 - `mimo-v2.5-free`
 - `nemotron-3-ultra-free`
-- `north-mini-code-free`
+- `nemotron-3.5-lightning-free`
 
 ## Requirements
 
