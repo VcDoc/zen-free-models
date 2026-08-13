@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-08-12T06:12:48.275Z",
+  "updatedAt": "2026-08-13T06:15:01.102Z",
   "source": "https://opencode.ai/docs/zen/",
   "modelIds": [
     "big-pickle",
@@ -12,8 +12,8 @@
     "nemotron-3.5-lightning-free"
   ],
   "raw": {
-    "totalModelsFound": 60,
-    "scrapeTimestamp": 1786515168275,
+    "totalModelsFound": 61,
+    "scrapeTimestamp": 1786601701102,
     "allModels": [
       {
         "modelId": "claude-fable-5",
@@ -161,6 +161,10 @@
       },
       {
         "modelId": "grok-build-0.1",
+        "isFree": false
+      },
+      {
+        "modelId": "grok-4.6",
         "isFree": false
       },
       {
