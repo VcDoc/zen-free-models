@@ -61,7 +61,6 @@ flowchart TB
 - `deepseek-v4-flash-free`
 - `hy3-free`
 - `laguna-s-2.1-free`
-- `ling-3.0-tiny-free`
 - `mimo-v2.5-free`
 - `nemotron-3-ultra-free`
 - `nemotron-3.5-lightning-free`
