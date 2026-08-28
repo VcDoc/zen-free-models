@@ -1,18 +1,18 @@
 {
-  "updatedAt": "2026-08-26T05:32:49.813Z",
+  "updatedAt": "2026-08-28T17:10:20.974Z",
   "source": "https://opencode.ai/docs/zen/",
   "modelIds": [
     "big-pickle",
     "hy3-free",
+    "ling-3.0-flash-fin-free",
     "mimo-v2.5-free",
     "muse-spark-1.2-contributor-free",
     "nemotron-3-ultra-free",
-    "nemotron-3.5-lightning-free",
-    "x-preview-f-free"
+    "nemotron-3.5-lightning-free"
   ],
   "raw": {
     "totalModelsFound": 64,
-    "scrapeTimestamp": 1787722369813,
+    "scrapeTimestamp": 1787937020974,
     "allModels": [
       {
         "modelId": "claude-fable-5",
@@ -243,10 +243,6 @@
         "isFree": false
       },
       {
-        "modelId": "x-preview-f-free",
-        "isFree": true
-      },
-      {
         "modelId": "muse-spark-1.2-contributor-free",
         "isFree": true
       },
@@ -256,6 +252,10 @@
       },
       {
         "modelId": "hy3-free",
+        "isFree": true
+      },
+      {
+        "modelId": "ling-3.0-flash-fin-free",
         "isFree": true
       },
       {

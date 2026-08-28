@@ -59,11 +59,11 @@ flowchart TB
 
 - `big-pickle`
 - `hy3-free`
+- `ling-3.0-flash-fin-free`
 - `mimo-v2.5-free`
 - `muse-spark-1.2-contributor-free`
 - `nemotron-3-ultra-free`
 - `nemotron-3.5-lightning-free`
-- `x-preview-f-free`
 
 ## Requirements
 
