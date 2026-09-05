@@ -1,18 +1,17 @@
 {
-  "updatedAt": "2026-09-04T09:20:46.884Z",
+  "updatedAt": "2026-09-05T08:49:33.246Z",
   "source": "https://opencode.ai/docs/zen/",
   "modelIds": [
     "big-pickle",
     "ling-3.0-flash-fin-free",
     "mimo-v2.5-free",
-    "muse-spark-1.2-contributor-free",
     "muse-spark-1.3-contributor-free",
     "nemotron-3-ultra-free",
     "nemotron-3.5-lightning-free"
   ],
   "raw": {
-    "totalModelsFound": 66,
-    "scrapeTimestamp": 1788513646884,
+    "totalModelsFound": 70,
+    "scrapeTimestamp": 1788598173246,
     "allModels": [
       {
         "modelId": "claude-fable-5",
@@ -88,6 +87,10 @@
       },
       {
         "modelId": "gemini-3-flash",
+        "isFree": false
+      },
+      {
+        "modelId": "gpt-6-astra",
         "isFree": false
       },
       {
@@ -183,6 +186,10 @@
         "isFree": false
       },
       {
+        "modelId": "muse-spark-1.3",
+        "isFree": false
+      },
+      {
         "modelId": "muse-spark-1.2",
         "isFree": false
       },
@@ -192,6 +199,18 @@
       },
       {
         "modelId": "deepseek-v4-flash",
+        "isFree": false
+      },
+      {
+        "modelId": "deepseek-v4-flash-vision-exp",
+        "isFree": false
+      },
+      {
+        "modelId": "glm-5.3-flash",
+        "isFree": false
+      },
+      {
+        "modelId": "glm-5.3",
         "isFree": false
       },
       {
@@ -256,7 +275,7 @@
       },
       {
         "modelId": "muse-spark-1.2-contributor-free",
-        "isFree": true
+        "isFree": false
       },
       {
         "modelId": "mimo-v2.5-free",
@@ -273,10 +292,6 @@
       {
         "modelId": "nemotron-3.5-lightning-free",
         "isFree": true
-      },
-      {
-        "modelId": "laguna-s-2.1-free",
-        "isFree": false
       }
     ]
   }
