@@ -63,7 +63,6 @@ flowchart TB
 - `muse-spark-1.3-contributor-free`
 - `nemotron-3-ultra-free`
 - `nemotron-3.5-lightning-free`
-- `union-alpha`
 
 ## Requirements
 
