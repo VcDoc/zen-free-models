@@ -1,8 +1,9 @@
 {
-  "updatedAt": "2026-09-18T09:23:35.106Z",
+  "updatedAt": "2026-09-19T09:11:53.856Z",
   "source": "https://opencode.ai/docs/zen/",
   "modelIds": [
     "big-pickle",
+    "jev-1.13-free",
     "ling-3.0-flash-fin-free",
     "mimo-v2.5-free",
     "muse-spark-1.3-contributor-free",
@@ -10,8 +11,8 @@
     "nemotron-3.5-lightning-free"
   ],
   "raw": {
-    "totalModelsFound": 71,
-    "scrapeTimestamp": 1789723415106,
+    "totalModelsFound": 74,
+    "scrapeTimestamp": 1789809113856,
     "allModels": [
       {
         "modelId": "claude-fable-5",
@@ -194,6 +195,10 @@
         "isFree": false
       },
       {
+        "modelId": "deepseek-v4.1-flash",
+        "isFree": false
+      },
+      {
         "modelId": "deepseek-v4-pro",
         "isFree": false
       },
@@ -254,6 +259,10 @@
         "isFree": false
       },
       {
+        "modelId": "qwen3.8-flash",
+        "isFree": false
+      },
+      {
         "modelId": "qwen3.6-plus",
         "isFree": false
       },
@@ -262,12 +271,16 @@
         "isFree": false
       },
       {
+        "modelId": "jev-1.13",
+        "isFree": false
+      },
+      {
         "modelId": "big-pickle",
         "isFree": true
       },
       {
-        "modelId": "union-alpha",
-        "isFree": false
+        "modelId": "jev-1.13-free",
+        "isFree": true
       },
       {
         "modelId": "deepseek-v4-flash-free",
