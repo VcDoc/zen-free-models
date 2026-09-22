@@ -61,6 +61,7 @@ flowchart TB
 - `jev-1.13-free`
 - `ling-3.0-flash-fin-free`
 - `mimo-v2.5-free`
+- `mimo-v2.6-flash-free`
 - `muse-spark-1.3-contributor-free`
 - `nemotron-3-ultra-free`
 - `nemotron-3.5-lightning-free`
