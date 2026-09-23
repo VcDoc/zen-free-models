@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-09-22T09:38:30.227Z",
+  "updatedAt": "2026-09-23T09:45:41.936Z",
   "source": "https://opencode.ai/docs/zen/",
   "modelIds": [
     "big-pickle",
@@ -12,8 +12,8 @@
     "nemotron-3.5-lightning-free"
   ],
   "raw": {
-    "totalModelsFound": 76,
-    "scrapeTimestamp": 1790069910227,
+    "totalModelsFound": 79,
+    "scrapeTimestamp": 1790156741936,
     "allModels": [
       {
         "modelId": "claude-fable-5",
@@ -21,6 +21,10 @@
       },
       {
         "modelId": "claude-fable-5-1",
+        "isFree": false
+      },
+      {
+        "modelId": "claude-opus-5-5",
         "isFree": false
       },
       {
@@ -93,6 +97,14 @@
       },
       {
         "modelId": "gpt-6-astra",
+        "isFree": false
+      },
+      {
+        "modelId": "gpt-6-sol",
+        "isFree": false
+      },
+      {
+        "modelId": "gpt-6-luna",
         "isFree": false
       },
       {
