@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-09-29T11:08:10.929Z",
+  "updatedAt": "2026-09-30T10:54:33.379Z",
   "source": "https://opencode.ai/docs/zen/",
   "modelIds": [
     "big-pickle",
@@ -14,8 +14,8 @@
     "space-bunny-free"
   ],
   "raw": {
-    "totalModelsFound": 83,
-    "scrapeTimestamp": 1790680090929,
+    "totalModelsFound": 84,
+    "scrapeTimestamp": 1790765673379,
     "allModels": [
       {
         "modelId": "claude-fable-5",
@@ -103,6 +103,10 @@
       },
       {
         "modelId": "gpt-6-astra",
+        "isFree": false
+      },
+      {
+        "modelId": "gpt-6.1-sol",
         "isFree": false
       },
       {
