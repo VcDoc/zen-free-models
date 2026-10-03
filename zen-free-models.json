@@ -1,10 +1,12 @@
 {
-  "updatedAt": "2026-10-02T10:53:34.420Z",
+  "updatedAt": "2026-10-03T10:13:01.892Z",
   "source": "https://opencode.ai/docs/zen/",
   "modelIds": [
     "big-pickle",
+    "fledge-alpha-free",
     "jev-1.13-free",
     "ling-3.0-flash-fin-free",
+    "ling-3.1-flash-free",
     "longcat-2.5-preview-free",
     "mimo-v2.5-free",
     "mimo-v2.6-flash-free",
@@ -14,8 +16,8 @@
     "space-bunny-free"
   ],
   "raw": {
-    "totalModelsFound": 85,
-    "scrapeTimestamp": 1790938414420,
+    "totalModelsFound": 86,
+    "scrapeTimestamp": 1791022381892,
     "allModels": [
       {
         "modelId": "claude-fable-5",
@@ -351,11 +353,15 @@
       },
       {
         "modelId": "fledge-alpha-free",
-        "isFree": false
+        "isFree": true
       },
       {
         "modelId": "qwen3.8-max",
         "isFree": false
+      },
+      {
+        "modelId": "ling-3.1-flash-free",
+        "isFree": true
       }
     ]
   }
