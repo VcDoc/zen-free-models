@@ -58,13 +58,14 @@ flowchart TB
 ## Free Models (Current)
 
 - `big-pickle`
+- `exo-free`
 - `fledge-alpha-free`
 - `jev-1.13-free`
 - `ling-3.0-flash-fin-free`
 - `ling-3.1-flash-free`
 - `longcat-2.5-preview-free`
-- `mimo-v2.5-free`
 - `mimo-v2.6-flash-free`
+- `minimax-m2.5`
 - `muse-spark-1.3-contributor-free`
 - `nemotron-3-ultra-free`
 - `nemotron-3.5-lightning-free`
