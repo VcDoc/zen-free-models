@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-10-07T11:31:57.303Z",
+  "updatedAt": "2026-10-08T11:47:22.805Z",
   "source": "https://opencode.ai/docs/zen/",
   "modelIds": [
     "big-pickle",
@@ -17,8 +17,8 @@
     "space-bunny-free"
   ],
   "raw": {
-    "totalModelsFound": 86,
-    "scrapeTimestamp": 1791372717303,
+    "totalModelsFound": 87,
+    "scrapeTimestamp": 1791460042805,
     "allModels": [
       {
         "modelId": "claude-fable-5",
@@ -70,6 +70,10 @@
       },
       {
         "modelId": "claude-sonnet-4",
+        "isFree": false
+      },
+      {
+        "modelId": "claude-haiku-5-5",
         "isFree": false
       },
       {
