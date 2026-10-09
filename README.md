@@ -59,7 +59,6 @@ flowchart TB
 
 - `big-pickle`
 - `exo-free`
-- `fledge-alpha-free`
 - `jev-1.13-free`
 - `ling-3.0-flash-fin-free`
 - `ling-3.1-flash-free`
@@ -70,6 +69,7 @@ flowchart TB
 - `nemotron-3-ultra-free`
 - `nemotron-3.5-lightning-free`
 - `space-bunny-free`
+- `step-5-preview-free`
 
 ## Requirements
 
