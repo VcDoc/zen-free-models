@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-10-09T11:39:50.478Z",
+  "updatedAt": "2026-10-10T10:57:31.113Z",
   "source": "https://opencode.ai/docs/zen/",
   "modelIds": [
     "big-pickle",
@@ -9,7 +9,6 @@
     "ling-3.1-flash-free",
     "longcat-2.5-preview-free",
     "mimo-v2.6-flash-free",
-    "minimax-m2.5",
     "muse-spark-1.3-contributor-free",
     "nemotron-3-ultra-free",
     "nemotron-3.5-lightning-free",
@@ -18,7 +17,7 @@
   ],
   "raw": {
     "totalModelsFound": 87,
-    "scrapeTimestamp": 1791545990478,
+    "scrapeTimestamp": 1791629851113,
     "allModels": [
       {
         "modelId": "claude-fable-5",
@@ -278,7 +277,7 @@
       },
       {
         "modelId": "minimax-m2.5",
-        "isFree": true
+        "isFree": false
       },
       {
         "modelId": "kimi-k3",
