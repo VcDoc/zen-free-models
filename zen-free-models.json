@@ -1,26 +1,72 @@
 {
-  "updatedAt": "2026-10-11T11:13:42.580Z",
+  "updatedAt": "2026-10-13T12:28:15.573Z",
   "source": "https://opencode.ai/docs/zen/",
   "modelIds": [
     "big-pickle",
-    "exo-free",
+    "cat-jam-free",
     "jev-1.13-free",
-    "ling-3.0-flash-fin-free",
     "ling-3.1-flash-free",
     "longcat-2.5-preview-free",
     "mimo-v2.6-flash-free",
     "muse-spark-1.3-contributor-free",
-    "nemotron-3-ultra-free",
     "nemotron-3.5-lightning-free",
     "space-bunny-free",
     "step-5-preview-free"
   ],
   "raw": {
-    "totalModelsFound": 87,
-    "scrapeTimestamp": 1791717222580,
+    "totalModelsFound": 84,
+    "scrapeTimestamp": 1791894495573,
     "allModels": [
       {
+        "modelId": "big-pickle",
+        "isFree": true
+      },
+      {
+        "modelId": "ling-3.1-flash-free",
+        "isFree": true
+      },
+      {
+        "modelId": "cat-jam-free",
+        "isFree": true
+      },
+      {
+        "modelId": "mimo-v2.6-flash-free",
+        "isFree": true
+      },
+      {
+        "modelId": "muse-spark-1.2-contributor-free",
+        "isFree": false
+      },
+      {
+        "modelId": "muse-spark-1.3-contributor-free",
+        "isFree": true
+      },
+      {
+        "modelId": "nemotron-3.5-lightning-free",
+        "isFree": true
+      },
+      {
+        "modelId": "jev-1.13-free",
+        "isFree": true
+      },
+      {
+        "modelId": "step-5-preview-free",
+        "isFree": true
+      },
+      {
+        "modelId": "longcat-2.5-preview-free",
+        "isFree": true
+      },
+      {
+        "modelId": "space-bunny-free",
+        "isFree": true
+      },
+      {
         "modelId": "claude-fable-5",
+        "isFree": false
+      },
+      {
+        "modelId": "jev-1.13",
         "isFree": false
       },
       {
@@ -28,47 +74,7 @@
         "isFree": false
       },
       {
-        "modelId": "claude-opus-5-5",
-        "isFree": false
-      },
-      {
-        "modelId": "claude-opus-5",
-        "isFree": false
-      },
-      {
-        "modelId": "claude-opus-4-8",
-        "isFree": false
-      },
-      {
-        "modelId": "claude-opus-4-7",
-        "isFree": false
-      },
-      {
-        "modelId": "claude-opus-4-6",
-        "isFree": false
-      },
-      {
-        "modelId": "claude-opus-4-5",
-        "isFree": false
-      },
-      {
-        "modelId": "claude-sonnet-5-5",
-        "isFree": false
-      },
-      {
-        "modelId": "claude-sonnet-5",
-        "isFree": false
-      },
-      {
-        "modelId": "claude-sonnet-4-6",
-        "isFree": false
-      },
-      {
-        "modelId": "claude-sonnet-4-5",
-        "isFree": false
-      },
-      {
-        "modelId": "claude-sonnet-4",
+        "modelId": "claude-haiku-4-5",
         "isFree": false
       },
       {
@@ -76,31 +82,59 @@
         "isFree": false
       },
       {
-        "modelId": "claude-haiku-4-5",
+        "modelId": "claude-opus-4-5",
         "isFree": false
       },
       {
-        "modelId": "gemini-3.6-flash",
+        "modelId": "claude-opus-4-6",
         "isFree": false
       },
       {
-        "modelId": "gemini-3.8-flash",
+        "modelId": "claude-opus-4-7",
         "isFree": false
       },
       {
-        "modelId": "gemini-3.7-flash",
+        "modelId": "claude-opus-4-8",
         "isFree": false
       },
       {
-        "modelId": "gemini-3.5-flash-lite",
+        "modelId": "claude-opus-5",
         "isFree": false
       },
       {
-        "modelId": "gemini-3.5-flash",
+        "modelId": "claude-opus-5-5",
         "isFree": false
       },
       {
-        "modelId": "gemini-3.1-pro",
+        "modelId": "claude-opus-5-5-backup",
+        "isFree": false
+      },
+      {
+        "modelId": "claude-sonnet-4-5",
+        "isFree": false
+      },
+      {
+        "modelId": "claude-sonnet-4-6",
+        "isFree": false
+      },
+      {
+        "modelId": "claude-sonnet-5",
+        "isFree": false
+      },
+      {
+        "modelId": "claude-sonnet-5-5",
+        "isFree": false
+      },
+      {
+        "modelId": "deepseek-v4-flash",
+        "isFree": false
+      },
+      {
+        "modelId": "deepseek-v4.1-flash",
+        "isFree": false
+      },
+      {
+        "modelId": "deepseek-v4-pro",
         "isFree": false
       },
       {
@@ -108,87 +142,47 @@
         "isFree": false
       },
       {
-        "modelId": "gpt-6-astra",
+        "modelId": "gemini-3.1-pro",
         "isFree": false
       },
       {
-        "modelId": "gpt-6.1-sol",
+        "modelId": "gemini-3.5-flash",
         "isFree": false
       },
       {
-        "modelId": "gpt-6-sol",
+        "modelId": "gemini-3.5-flash-lite",
         "isFree": false
       },
       {
-        "modelId": "gpt-6-luna",
+        "modelId": "gemini-3.6-flash",
         "isFree": false
       },
       {
-        "modelId": "gpt-5.6-sol",
+        "modelId": "gemini-3.7-flash",
         "isFree": false
       },
       {
-        "modelId": "gpt-5.6-terra",
+        "modelId": "gemini-3.8-flash",
         "isFree": false
       },
       {
-        "modelId": "gpt-5.6-luna",
+        "modelId": "glm-5",
         "isFree": false
       },
       {
-        "modelId": "gpt-5.5",
+        "modelId": "glm-5.1",
         "isFree": false
       },
       {
-        "modelId": "gpt-5.5-pro",
+        "modelId": "glm-5.2",
         "isFree": false
       },
       {
-        "modelId": "gpt-5.4",
+        "modelId": "glm-5.3",
         "isFree": false
       },
       {
-        "modelId": "gpt-5.4-pro",
-        "isFree": false
-      },
-      {
-        "modelId": "gpt-5.4-mini",
-        "isFree": false
-      },
-      {
-        "modelId": "gpt-5.4-nano",
-        "isFree": false
-      },
-      {
-        "modelId": "gpt-5.3-codex-spark",
-        "isFree": false
-      },
-      {
-        "modelId": "gpt-5.3-codex",
-        "isFree": false
-      },
-      {
-        "modelId": "gpt-5.2",
-        "isFree": false
-      },
-      {
-        "modelId": "gpt-5.2-codex",
-        "isFree": false
-      },
-      {
-        "modelId": "gpt-5.1",
-        "isFree": false
-      },
-      {
-        "modelId": "gpt-5.1-codex-max",
-        "isFree": false
-      },
-      {
-        "modelId": "gpt-5.1-codex",
-        "isFree": false
-      },
-      {
-        "modelId": "gpt-5.1-codex-mini",
+        "modelId": "glm-5.3-flash",
         "isFree": false
       },
       {
@@ -204,15 +198,87 @@
         "isFree": false
       },
       {
-        "modelId": "grok-build-0.1",
+        "modelId": "gpt-5.1",
         "isFree": false
       },
       {
-        "modelId": "grok-4.7",
+        "modelId": "gpt-5.1-codex",
         "isFree": false
       },
       {
-        "modelId": "grok-4.6",
+        "modelId": "gpt-5.1-codex-max",
+        "isFree": false
+      },
+      {
+        "modelId": "gpt-5.1-codex-mini",
+        "isFree": false
+      },
+      {
+        "modelId": "gpt-5.2",
+        "isFree": false
+      },
+      {
+        "modelId": "gpt-5.2-codex",
+        "isFree": false
+      },
+      {
+        "modelId": "gpt-5.3-codex",
+        "isFree": false
+      },
+      {
+        "modelId": "gpt-5.3-codex-spark",
+        "isFree": false
+      },
+      {
+        "modelId": "gpt-5.4",
+        "isFree": false
+      },
+      {
+        "modelId": "gpt-5.4-mini",
+        "isFree": false
+      },
+      {
+        "modelId": "gpt-5.4-nano",
+        "isFree": false
+      },
+      {
+        "modelId": "gpt-5.4-pro",
+        "isFree": false
+      },
+      {
+        "modelId": "gpt-5.5",
+        "isFree": false
+      },
+      {
+        "modelId": "gpt-5.5-pro",
+        "isFree": false
+      },
+      {
+        "modelId": "gpt-5.6-luna",
+        "isFree": false
+      },
+      {
+        "modelId": "gpt-5.6-sol",
+        "isFree": false
+      },
+      {
+        "modelId": "gpt-6-astra",
+        "isFree": false
+      },
+      {
+        "modelId": "gpt-6-sol",
+        "isFree": false
+      },
+      {
+        "modelId": "gpt-6.1-sol",
+        "isFree": false
+      },
+      {
+        "modelId": "gpt-6-luna",
+        "isFree": false
+      },
+      {
+        "modelId": "gpt-5.6-terra",
         "isFree": false
       },
       {
@@ -220,75 +286,15 @@
         "isFree": false
       },
       {
-        "modelId": "muse-spark-1.3",
+        "modelId": "grok-4.6",
         "isFree": false
       },
       {
-        "modelId": "muse-spark-1.2",
+        "modelId": "grok-4.7",
         "isFree": false
       },
       {
-        "modelId": "mistral-large-4",
-        "isFree": false
-      },
-      {
-        "modelId": "deepseek-v4.1-flash",
-        "isFree": false
-      },
-      {
-        "modelId": "deepseek-v4-pro",
-        "isFree": false
-      },
-      {
-        "modelId": "deepseek-v4-flash",
-        "isFree": false
-      },
-      {
-        "modelId": "deepseek-v4-flash-vision-exp",
-        "isFree": false
-      },
-      {
-        "modelId": "glm-5.3-flash",
-        "isFree": false
-      },
-      {
-        "modelId": "glm-5.3",
-        "isFree": false
-      },
-      {
-        "modelId": "glm-5.2",
-        "isFree": false
-      },
-      {
-        "modelId": "glm-5.1",
-        "isFree": false
-      },
-      {
-        "modelId": "glm-5",
-        "isFree": false
-      },
-      {
-        "modelId": "minimax-m3",
-        "isFree": false
-      },
-      {
-        "modelId": "minimax-m2.7",
-        "isFree": false
-      },
-      {
-        "modelId": "minimax-m2.5",
-        "isFree": false
-      },
-      {
-        "modelId": "kimi-k3",
-        "isFree": false
-      },
-      {
-        "modelId": "kimi-k2.7-code",
-        "isFree": false
-      },
-      {
-        "modelId": "kimi-k2.6",
+        "modelId": "grok-build-0.1",
         "isFree": false
       },
       {
@@ -296,11 +302,39 @@
         "isFree": false
       },
       {
-        "modelId": "qwen3.8-flash",
+        "modelId": "kimi-k2.6",
         "isFree": false
       },
       {
-        "modelId": "qwen3.6-plus",
+        "modelId": "kimi-k2.7-code",
+        "isFree": false
+      },
+      {
+        "modelId": "kimi-k3",
+        "isFree": false
+      },
+      {
+        "modelId": "minimax-m2.5",
+        "isFree": false
+      },
+      {
+        "modelId": "minimax-m2.7",
+        "isFree": false
+      },
+      {
+        "modelId": "minimax-m3",
+        "isFree": false
+      },
+      {
+        "modelId": "muse-spark-1.2",
+        "isFree": false
+      },
+      {
+        "modelId": "muse-spark-1.3",
+        "isFree": false
+      },
+      {
+        "modelId": "mistral-large-4",
         "isFree": false
       },
       {
@@ -308,64 +342,16 @@
         "isFree": false
       },
       {
-        "modelId": "jev-1.13",
+        "modelId": "qwen3.6-plus",
         "isFree": false
       },
       {
-        "modelId": "big-pickle",
-        "isFree": true
-      },
-      {
-        "modelId": "jev-1.13-free",
-        "isFree": true
-      },
-      {
-        "modelId": "exo-free",
-        "isFree": true
-      },
-      {
-        "modelId": "muse-spark-1.3-contributor-free",
-        "isFree": true
-      },
-      {
-        "modelId": "muse-spark-1.2-contributor-free",
+        "modelId": "qwen3.8-flash",
         "isFree": false
-      },
-      {
-        "modelId": "mimo-v2.6-flash-free",
-        "isFree": true
-      },
-      {
-        "modelId": "space-bunny-free",
-        "isFree": true
-      },
-      {
-        "modelId": "longcat-2.5-preview-free",
-        "isFree": true
-      },
-      {
-        "modelId": "step-5-preview-free",
-        "isFree": true
-      },
-      {
-        "modelId": "ling-3.0-flash-fin-free",
-        "isFree": true
-      },
-      {
-        "modelId": "nemotron-3-ultra-free",
-        "isFree": true
-      },
-      {
-        "modelId": "nemotron-3.5-lightning-free",
-        "isFree": true
       },
       {
         "modelId": "qwen3.8-max",
         "isFree": false
-      },
-      {
-        "modelId": "ling-3.1-flash-free",
-        "isFree": true
       }
     ]
   }
