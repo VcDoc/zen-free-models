@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-10-13T12:28:15.573Z",
+  "updatedAt": "2026-10-14T09:55:40.080Z",
   "source": "https://opencode.ai/docs/zen/",
   "modelIds": [
     "big-pickle",
@@ -14,8 +14,8 @@
     "step-5-preview-free"
   ],
   "raw": {
-    "totalModelsFound": 84,
-    "scrapeTimestamp": 1791894495573,
+    "totalModelsFound": 86,
+    "scrapeTimestamp": 1791971740080,
     "allModels": [
       {
         "modelId": "big-pickle",
@@ -60,6 +60,10 @@
       {
         "modelId": "space-bunny-free",
         "isFree": true
+      },
+      {
+        "modelId": "test",
+        "isFree": false
       },
       {
         "modelId": "claude-fable-5",
@@ -163,6 +167,10 @@
       },
       {
         "modelId": "gemini-3.8-flash",
+        "isFree": false
+      },
+      {
+        "modelId": "gemini-4-argon",
         "isFree": false
       },
       {
