@@ -60,13 +60,15 @@ flowchart TB
 - `big-pickle`
 - `cat-jam-free`
 - `deepseek-v4.1-flash-free`
+- `glm-5.3-flash-free`
 - `jev-1.13-free`
+- `ll-alpha-free`
 - `longcat-2.5-preview-free`
 - `mimo-v2.6-flash-free`
 - `muse-spark-1.3-contributor-free`
 - `nemotron-3.5-lightning-free`
+- `nemotron-3.5-super-vl-free`
 - `space-bunny-free`
-- `step-5-preview-free`
 
 ## Requirements
 

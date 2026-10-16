@@ -1,21 +1,23 @@
 {
-  "updatedAt": "2026-10-15T09:37:07.306Z",
+  "updatedAt": "2026-10-16T09:30:44.081Z",
   "source": "https://opencode.ai/docs/zen/",
   "modelIds": [
     "big-pickle",
     "cat-jam-free",
     "deepseek-v4.1-flash-free",
+    "glm-5.3-flash-free",
     "jev-1.13-free",
+    "ll-alpha-free",
     "longcat-2.5-preview-free",
     "mimo-v2.6-flash-free",
     "muse-spark-1.3-contributor-free",
     "nemotron-3.5-lightning-free",
-    "space-bunny-free",
-    "step-5-preview-free"
+    "nemotron-3.5-super-vl-free",
+    "space-bunny-free"
   ],
   "raw": {
-    "totalModelsFound": 86,
-    "scrapeTimestamp": 1792057027306,
+    "totalModelsFound": 88,
+    "scrapeTimestamp": 1792143044081,
     "allModels": [
       {
         "modelId": "big-pickle",
@@ -23,6 +25,10 @@
       },
       {
         "modelId": "cat-jam-free",
+        "isFree": true
+      },
+      {
+        "modelId": "ll-alpha-free",
         "isFree": true
       },
       {
@@ -38,6 +44,10 @@
         "isFree": true
       },
       {
+        "modelId": "nemotron-3.5-super-vl-free",
+        "isFree": true
+      },
+      {
         "modelId": "nemotron-3.5-lightning-free",
         "isFree": true
       },
@@ -46,15 +56,15 @@
         "isFree": true
       },
       {
-        "modelId": "step-5-preview-free",
-        "isFree": true
-      },
-      {
         "modelId": "longcat-2.5-preview-free",
         "isFree": true
       },
       {
         "modelId": "deepseek-v4.1-flash-free",
+        "isFree": true
+      },
+      {
+        "modelId": "glm-5.3-flash-free",
         "isFree": true
       },
       {
