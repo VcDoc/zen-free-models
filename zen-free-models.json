@@ -1,46 +1,33 @@
 {
-  "updatedAt": "2026-10-16T09:30:44.081Z",
+  "updatedAt": "2026-10-17T09:01:18.528Z",
   "source": "https://opencode.ai/docs/zen/",
   "modelIds": [
+    "beam-free",
     "big-pickle",
-    "cat-jam-free",
     "deepseek-v4.1-flash-free",
-    "glm-5.3-flash-free",
+    "glm-5.3-flash",
     "jev-1.13-free",
-    "ll-alpha-free",
     "longcat-2.5-preview-free",
     "mimo-v2.6-flash-free",
-    "muse-spark-1.3-contributor-free",
+    "muse-spark-1.3",
     "nemotron-3.5-lightning-free",
     "nemotron-3.5-super-vl-free",
     "space-bunny-free"
   ],
   "raw": {
-    "totalModelsFound": 88,
-    "scrapeTimestamp": 1792143044081,
+    "totalModelsFound": 85,
+    "scrapeTimestamp": 1792227678528,
     "allModels": [
       {
         "modelId": "big-pickle",
         "isFree": true
       },
       {
-        "modelId": "cat-jam-free",
-        "isFree": true
-      },
-      {
-        "modelId": "ll-alpha-free",
+        "modelId": "beam-free",
         "isFree": true
       },
       {
         "modelId": "mimo-v2.6-flash-free",
-        "isFree": true
-      },
-      {
-        "modelId": "muse-spark-1.2-contributor-free",
-        "isFree": false
-      },
-      {
-        "modelId": "muse-spark-1.3-contributor-free",
         "isFree": true
       },
       {
@@ -65,7 +52,7 @@
       },
       {
         "modelId": "glm-5.3-flash-free",
-        "isFree": true
+        "isFree": false
       },
       {
         "modelId": "space-bunny-free",
@@ -201,7 +188,7 @@
       },
       {
         "modelId": "glm-5.3-flash",
-        "isFree": false
+        "isFree": true
       },
       {
         "modelId": "gpt-5",
@@ -349,7 +336,7 @@
       },
       {
         "modelId": "muse-spark-1.3",
-        "isFree": false
+        "isFree": true
       },
       {
         "modelId": "mistral-large-4",
