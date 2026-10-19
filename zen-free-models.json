@@ -1,11 +1,11 @@
 {
-  "updatedAt": "2026-10-18T09:20:17.480Z",
+  "updatedAt": "2026-10-19T10:31:07.624Z",
   "source": "https://opencode.ai/docs/zen/",
   "modelIds": [
     "beam-free",
     "big-pickle",
     "deepseek-v4.1-flash-free",
-    "glm-5.3-flash",
+    "glm-5.3-flash-free",
     "jev-1.13-free",
     "longcat-2.5-preview-free",
     "mimo-v2.6-flash-free",
@@ -15,7 +15,7 @@
   ],
   "raw": {
     "totalModelsFound": 85,
-    "scrapeTimestamp": 1792315217480,
+    "scrapeTimestamp": 1792405867624,
     "allModels": [
       {
         "modelId": "big-pickle",
@@ -51,7 +51,7 @@
       },
       {
         "modelId": "glm-5.3-flash-free",
-        "isFree": false
+        "isFree": true
       },
       {
         "modelId": "space-bunny-free",
@@ -187,7 +187,7 @@
       },
       {
         "modelId": "glm-5.3-flash",
-        "isFree": true
+        "isFree": false
       },
       {
         "modelId": "gpt-5",
