@@ -1,13 +1,13 @@
 {
-  "updatedAt": "2026-10-21T09:50:00.572Z",
+  "updatedAt": "2026-10-22T09:50:58.014Z",
   "source": "https://opencode.ai/docs/zen/",
   "modelIds": [
     "beam-free",
     "big-pickle",
     "deepseek-v4.1-flash-free",
+    "flint-40b-free",
     "glm-5.3-flash",
     "jev-1.13-free",
-    "longcat-2.5-preview-free",
     "mimo-v2.6-flash-free",
     "minimax-m3.1-flash-free",
     "nemotron-3.5-lightning-free",
@@ -15,7 +15,7 @@
   ],
   "raw": {
     "totalModelsFound": 86,
-    "scrapeTimestamp": 1792576200572,
+    "scrapeTimestamp": 1792662658014,
     "allModels": [
       {
         "modelId": "big-pickle",
@@ -23,6 +23,10 @@
       },
       {
         "modelId": "beam-free",
+        "isFree": true
+      },
+      {
+        "modelId": "flint-40b-free",
         "isFree": true
       },
       {
@@ -39,10 +43,6 @@
       },
       {
         "modelId": "jev-1.13-free",
-        "isFree": true
-      },
-      {
-        "modelId": "longcat-2.5-preview-free",
         "isFree": true
       },
       {

@@ -60,9 +60,9 @@ flowchart TB
 - `beam-free`
 - `big-pickle`
 - `deepseek-v4.1-flash-free`
+- `flint-40b-free`
 - `glm-5.3-flash`
 - `jev-1.13-free`
-- `longcat-2.5-preview-free`
 - `mimo-v2.6-flash-free`
 - `minimax-m3.1-flash-free`
 - `nemotron-3.5-lightning-free`
