@@ -64,7 +64,6 @@ flowchart TB
 - `glm-5.3-flash`
 - `jev-1.13-free`
 - `mimo-v2.6-flash-free`
-- `minimax-m3.1-flash-free`
 - `nemotron-3.5-lightning-free`
 - `nemotron-3.5-super-vl-free`
 
