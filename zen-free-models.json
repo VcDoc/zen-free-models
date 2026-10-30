@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-10-29T11:18:52.395Z",
+  "updatedAt": "2026-10-30T11:11:15.040Z",
   "source": "https://opencode.ai/docs/zen/",
   "modelIds": [
     "beam-free",
@@ -7,14 +7,13 @@
     "deepseek-v4.1-flash-free",
     "flint-40b-free",
     "glm-5.3-flash-free",
-    "jev-1.13-free",
     "mimo-v2.6-flash-free",
     "nemotron-3.5-lightning-free",
     "nemotron-3.5-super-vl-free"
   ],
   "raw": {
-    "totalModelsFound": 83,
-    "scrapeTimestamp": 1793272732395,
+    "totalModelsFound": 78,
+    "scrapeTimestamp": 1793358675040,
     "allModels": [
       {
         "modelId": "big-pickle",
@@ -41,10 +40,6 @@
         "isFree": true
       },
       {
-        "modelId": "jev-1.13-free",
-        "isFree": true
-      },
-      {
         "modelId": "deepseek-v4.1-flash-free",
         "isFree": true
       },
@@ -54,10 +49,6 @@
       },
       {
         "modelId": "claude-fable-5",
-        "isFree": false
-      },
-      {
-        "modelId": "jev-1.13",
         "isFree": false
       },
       {
@@ -97,10 +88,6 @@
         "isFree": false
       },
       {
-        "modelId": "claude-opus-5-5-backup",
-        "isFree": false
-      },
-      {
         "modelId": "claude-sonnet-4-5",
         "isFree": false
       },
@@ -122,14 +109,6 @@
       },
       {
         "modelId": "deepseek-v4-pro",
-        "isFree": false
-      },
-      {
-        "modelId": "gemini-3-flash",
-        "isFree": false
-      },
-      {
-        "modelId": "gemini-3.1-pro",
         "isFree": false
       },
       {
