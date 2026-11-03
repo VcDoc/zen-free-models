@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-02T13:06:59.603Z",
+  "updatedAt": "2026-11-03T12:38:03.316Z",
   "source": "https://opencode.ai/docs/zen/",
   "modelIds": [
     "beam-free",
@@ -9,11 +9,12 @@
     "glm-5.3-flash",
     "mimo-v2.6-flash-free",
     "nemotron-3.5-lightning-free",
-    "nemotron-3.5-super-vl-free"
+    "nemotron-3.5-super-vl-free",
+    "pulse-alpha-free"
   ],
   "raw": {
-    "totalModelsFound": 78,
-    "scrapeTimestamp": 1793624819603,
+    "totalModelsFound": 79,
+    "scrapeTimestamp": 1793709483316,
     "allModels": [
       {
         "modelId": "big-pickle",
@@ -326,6 +327,10 @@
       {
         "modelId": "qwen3.8-max",
         "isFree": false
+      },
+      {
+        "modelId": "pulse-alpha-free",
+        "isFree": true
       }
     ]
   }
