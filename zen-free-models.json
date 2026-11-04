@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-03T12:38:03.316Z",
+  "updatedAt": "2026-11-04T12:47:11.770Z",
   "source": "https://opencode.ai/docs/zen/",
   "modelIds": [
     "beam-free",
@@ -13,8 +13,8 @@
     "pulse-alpha-free"
   ],
   "raw": {
-    "totalModelsFound": 79,
-    "scrapeTimestamp": 1793709483316,
+    "totalModelsFound": 80,
+    "scrapeTimestamp": 1793796431770,
     "allModels": [
       {
         "modelId": "big-pickle",
@@ -331,6 +331,10 @@
       {
         "modelId": "pulse-alpha-free",
         "isFree": true
+      },
+      {
+        "modelId": "crouton-alpha-free",
+        "isFree": false
       }
     ]
   }
