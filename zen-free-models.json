@@ -1,9 +1,10 @@
 {
-  "updatedAt": "2026-11-04T12:47:11.770Z",
+  "updatedAt": "2026-11-05T12:56:51.773Z",
   "source": "https://opencode.ai/docs/zen/",
   "modelIds": [
     "beam-free",
     "big-pickle",
+    "crouton-alpha-free",
     "deepseek-v4.1-flash-free",
     "flint-40b-free",
     "glm-5.3-flash",
@@ -14,7 +15,7 @@
   ],
   "raw": {
     "totalModelsFound": 80,
-    "scrapeTimestamp": 1793796431770,
+    "scrapeTimestamp": 1793883411773,
     "allModels": [
       {
         "modelId": "big-pickle",
@@ -334,7 +335,7 @@
       },
       {
         "modelId": "crouton-alpha-free",
-        "isFree": false
+        "isFree": true
       }
     ]
   }

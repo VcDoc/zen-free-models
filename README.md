@@ -59,6 +59,7 @@ flowchart TB
 
 - `beam-free`
 - `big-pickle`
+- `crouton-alpha-free`
 - `deepseek-v4.1-flash-free`
 - `flint-40b-free`
 - `glm-5.3-flash`
