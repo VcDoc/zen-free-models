@@ -62,7 +62,7 @@ flowchart TB
 - `crouton-alpha-free`
 - `deepseek-v4.1-flash-free`
 - `flint-40b-free`
-- `glm-5.3-flash`
+- `glm-5.3-flash-free`
 - `mimo-v2.6-flash-free`
 - `nemotron-3.5-lightning-free`
 - `nemotron-3.5-super-vl-free`
