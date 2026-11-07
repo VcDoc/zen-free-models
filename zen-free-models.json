@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-06T12:43:45.631Z",
+  "updatedAt": "2026-11-07T11:31:13.496Z",
   "source": "https://opencode.ai/docs/zen/",
   "modelIds": [
     "beam-free",
@@ -7,15 +7,16 @@
     "crouton-alpha-free",
     "deepseek-v4.1-flash-free",
     "flint-40b-free",
-    "glm-5.3-flash-free",
+    "glm-5.3-flash",
+    "iceman-free",
+    "inkling-2-small-free",
     "mimo-v2.6-flash-free",
     "nemotron-3.5-lightning-free",
-    "nemotron-3.5-super-vl-free",
-    "pulse-alpha-free"
+    "nemotron-3.5-super-vl-free"
   ],
   "raw": {
-    "totalModelsFound": 80,
-    "scrapeTimestamp": 1793969025631,
+    "totalModelsFound": 81,
+    "scrapeTimestamp": 1794051073496,
     "allModels": [
       {
         "modelId": "big-pickle",
@@ -47,7 +48,7 @@
       },
       {
         "modelId": "glm-5.3-flash-free",
-        "isFree": true
+        "isFree": false
       },
       {
         "modelId": "claude-fable-5",
@@ -155,7 +156,7 @@
       },
       {
         "modelId": "glm-5.3-flash",
-        "isFree": false
+        "isFree": true
       },
       {
         "modelId": "gpt-5",
@@ -330,11 +331,15 @@
         "isFree": false
       },
       {
-        "modelId": "pulse-alpha-free",
+        "modelId": "crouton-alpha-free",
         "isFree": true
       },
       {
-        "modelId": "crouton-alpha-free",
+        "modelId": "iceman-free",
+        "isFree": true
+      },
+      {
+        "modelId": "inkling-2-small-free",
         "isFree": true
       }
     ]
