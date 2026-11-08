@@ -62,7 +62,7 @@ flowchart TB
 - `crouton-alpha-free`
 - `deepseek-v4.1-flash-free`
 - `flint-40b-free`
-- `glm-5.3-flash`
+- `glm-5.3-flash-free`
 - `iceman-free`
 - `inkling-2-small-free`
 - `mimo-v2.6-flash-free`
