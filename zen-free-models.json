@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-08T11:42:34.311Z",
+  "updatedAt": "2026-11-09T13:37:55.150Z",
   "source": "https://opencode.ai/docs/zen/",
   "modelIds": [
     "beam-free",
@@ -7,39 +7,24 @@
     "crouton-alpha-free",
     "deepseek-v4.1-flash-free",
     "flint-40b-free",
-    "glm-5.3-flash-free",
+    "glm-5.3-flash",
     "iceman-free",
     "inkling-2-small-free",
+    "longcat-2.5-free",
     "mimo-v2.6-flash-free",
     "nemotron-3.5-lightning-free",
     "nemotron-3.5-super-vl-free"
   ],
   "raw": {
-    "totalModelsFound": 81,
-    "scrapeTimestamp": 1794138154311,
+    "totalModelsFound": 82,
+    "scrapeTimestamp": 1794231475150,
     "allModels": [
       {
         "modelId": "big-pickle",
         "isFree": true
       },
       {
-        "modelId": "beam-free",
-        "isFree": true
-      },
-      {
-        "modelId": "flint-40b-free",
-        "isFree": true
-      },
-      {
         "modelId": "mimo-v2.6-flash-free",
-        "isFree": true
-      },
-      {
-        "modelId": "nemotron-3.5-super-vl-free",
-        "isFree": true
-      },
-      {
-        "modelId": "nemotron-3.5-lightning-free",
         "isFree": true
       },
       {
@@ -48,7 +33,7 @@
       },
       {
         "modelId": "glm-5.3-flash-free",
-        "isFree": true
+        "isFree": false
       },
       {
         "modelId": "claude-fable-5",
@@ -156,7 +141,7 @@
       },
       {
         "modelId": "glm-5.3-flash",
-        "isFree": false
+        "isFree": true
       },
       {
         "modelId": "gpt-5",
@@ -335,11 +320,31 @@
         "isFree": true
       },
       {
+        "modelId": "longcat-2.5-free",
+        "isFree": true
+      },
+      {
         "modelId": "iceman-free",
         "isFree": true
       },
       {
         "modelId": "inkling-2-small-free",
+        "isFree": true
+      },
+      {
+        "modelId": "beam-free",
+        "isFree": true
+      },
+      {
+        "modelId": "flint-40b-free",
+        "isFree": true
+      },
+      {
+        "modelId": "nemotron-3.5-super-vl-free",
+        "isFree": true
+      },
+      {
+        "modelId": "nemotron-3.5-lightning-free",
         "isFree": true
       }
     ]
