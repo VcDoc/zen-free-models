@@ -1,10 +1,9 @@
 {
-  "updatedAt": "2026-11-09T13:37:55.150Z",
+  "updatedAt": "2026-11-10T13:15:42.639Z",
   "source": "https://opencode.ai/docs/zen/",
   "modelIds": [
     "beam-free",
     "big-pickle",
-    "crouton-alpha-free",
     "deepseek-v4.1-flash-free",
     "flint-40b-free",
     "glm-5.3-flash",
@@ -12,12 +11,13 @@
     "inkling-2-small-free",
     "longcat-2.5-free",
     "mimo-v2.6-flash-free",
+    "minimax-m3.1-flash-free",
     "nemotron-3.5-lightning-free",
     "nemotron-3.5-super-vl-free"
   ],
   "raw": {
-    "totalModelsFound": 82,
-    "scrapeTimestamp": 1794231475150,
+    "totalModelsFound": 84,
+    "scrapeTimestamp": 1794316542639,
     "allModels": [
       {
         "modelId": "big-pickle",
@@ -316,10 +316,6 @@
         "isFree": false
       },
       {
-        "modelId": "crouton-alpha-free",
-        "isFree": true
-      },
-      {
         "modelId": "longcat-2.5-free",
         "isFree": true
       },
@@ -345,6 +341,18 @@
       },
       {
         "modelId": "nemotron-3.5-lightning-free",
+        "isFree": true
+      },
+      {
+        "modelId": "muse-ember-1.0",
+        "isFree": false
+      },
+      {
+        "modelId": "claude-fable-5-2",
+        "isFree": false
+      },
+      {
+        "modelId": "minimax-m3.1-flash-free",
         "isFree": true
       }
     ]

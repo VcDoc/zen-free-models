@@ -59,7 +59,6 @@ flowchart TB
 
 - `beam-free`
 - `big-pickle`
-- `crouton-alpha-free`
 - `deepseek-v4.1-flash-free`
 - `flint-40b-free`
 - `glm-5.3-flash`
@@ -67,6 +66,7 @@ flowchart TB
 - `inkling-2-small-free`
 - `longcat-2.5-free`
 - `mimo-v2.6-flash-free`
+- `minimax-m3.1-flash-free`
 - `nemotron-3.5-lightning-free`
 - `nemotron-3.5-super-vl-free`
 
