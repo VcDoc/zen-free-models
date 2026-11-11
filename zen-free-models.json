@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-10T13:15:42.639Z",
+  "updatedAt": "2026-11-11T12:26:56.801Z",
   "source": "https://opencode.ai/docs/zen/",
   "modelIds": [
     "beam-free",
@@ -16,8 +16,8 @@
     "nemotron-3.5-super-vl-free"
   ],
   "raw": {
-    "totalModelsFound": 84,
-    "scrapeTimestamp": 1794316542639,
+    "totalModelsFound": 85,
+    "scrapeTimestamp": 1794400016801,
     "allModels": [
       {
         "modelId": "big-pickle",
@@ -354,6 +354,10 @@
       {
         "modelId": "minimax-m3.1-flash-free",
         "isFree": true
+      },
+      {
+        "modelId": "gemini-4-carbon",
+        "isFree": false
       }
     ]
   }
