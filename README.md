@@ -61,7 +61,8 @@ flowchart TB
 - `big-pickle`
 - `deepseek-v4.1-flash-free`
 - `flint-40b-free`
-- `glm-5.3-flash`
+- `glm-5.3-flash-free`
+- `hy4-flash-free`
 - `iceman-free`
 - `inkling-2-small-free`
 - `longcat-2.5-free`
