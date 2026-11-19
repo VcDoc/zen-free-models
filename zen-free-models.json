@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-18T13:40:25.505Z",
+  "updatedAt": "2026-11-19T14:07:49.968Z",
   "source": "https://opencode.ai/docs/zen/",
   "modelIds": [
     "beam-free",
@@ -9,14 +9,15 @@
     "hy4-flash-free",
     "iceman-free",
     "inkling-2-small-free",
+    "jev-1.13-free",
     "longcat-2.5-free",
     "mimo-v2.6-flash-free",
     "nemotron-3.5-lightning-free",
     "nemotron-3.5-super-vl-free"
   ],
   "raw": {
-    "totalModelsFound": 87,
-    "scrapeTimestamp": 1795009225505,
+    "totalModelsFound": 92,
+    "scrapeTimestamp": 1795097269968,
     "allModels": [
       {
         "modelId": "big-pickle",
@@ -32,6 +33,10 @@
       },
       {
         "modelId": "claude-fable-5",
+        "isFree": false
+      },
+      {
+        "modelId": "jev-1.13",
         "isFree": false
       },
       {
@@ -116,18 +121,6 @@
       },
       {
         "modelId": "gemini-4-argon",
-        "isFree": false
-      },
-      {
-        "modelId": "glm-5",
-        "isFree": false
-      },
-      {
-        "modelId": "glm-5.1",
-        "isFree": false
-      },
-      {
-        "modelId": "glm-5.2",
         "isFree": false
       },
       {
@@ -235,6 +228,10 @@
         "isFree": false
       },
       {
+        "modelId": "gpt-image-2.5-sunburst",
+        "isFree": false
+      },
+      {
         "modelId": "grok-4.5",
         "isFree": false
       },
@@ -248,14 +245,6 @@
       },
       {
         "modelId": "grok-build-0.1",
-        "isFree": false
-      },
-      {
-        "modelId": "kimi-k2.5",
-        "isFree": false
-      },
-      {
-        "modelId": "kimi-k2.6",
         "isFree": false
       },
       {
@@ -311,6 +300,10 @@
         "isFree": false
       },
       {
+        "modelId": "gpt-live-1",
+        "isFree": false
+      },
+      {
         "modelId": "longcat-2.5-free",
         "isFree": true
       },
@@ -335,6 +328,10 @@
         "isFree": true
       },
       {
+        "modelId": "jev-1.13-free",
+        "isFree": true
+      },
+      {
         "modelId": "nemotron-3.5-lightning-free",
         "isFree": true
       },
@@ -351,7 +348,19 @@
         "isFree": false
       },
       {
+        "modelId": "gemini-decision-1",
+        "isFree": false
+      },
+      {
+        "modelId": "gpt-6-luna-decision",
+        "isFree": false
+      },
+      {
         "modelId": "gemini-4-hydrogen",
+        "isFree": false
+      },
+      {
+        "modelId": "gemini-nano-banana-2.1",
         "isFree": false
       },
       {
@@ -359,11 +368,23 @@
         "isFree": true
       },
       {
+        "modelId": "grok-imagine-image-2.0",
+        "isFree": false
+      },
+      {
         "modelId": "gpt-6.2-sol",
         "isFree": false
       },
       {
         "modelId": "gpt-6.2-astra",
+        "isFree": false
+      },
+      {
+        "modelId": "tidepool-alpha-free",
+        "isFree": false
+      },
+      {
+        "modelId": "gemini-4-neon",
         "isFree": false
       }
     ]
