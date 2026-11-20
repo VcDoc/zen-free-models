@@ -63,7 +63,6 @@ flowchart TB
 - `flint-40b-free`
 - `hy4-flash-free`
 - `iceman-free`
-- `inkling-2-small-free`
 - `jev-1.13-free`
 - `longcat-2.5-free`
 - `mimo-v2.6-flash-free`

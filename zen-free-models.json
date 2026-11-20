@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-19T14:07:49.968Z",
+  "updatedAt": "2026-11-20T13:50:42.254Z",
   "source": "https://opencode.ai/docs/zen/",
   "modelIds": [
     "beam-free",
@@ -8,7 +8,6 @@
     "flint-40b-free",
     "hy4-flash-free",
     "iceman-free",
-    "inkling-2-small-free",
     "jev-1.13-free",
     "longcat-2.5-free",
     "mimo-v2.6-flash-free",
@@ -16,8 +15,8 @@
     "nemotron-3.5-super-vl-free"
   ],
   "raw": {
-    "totalModelsFound": 92,
-    "scrapeTimestamp": 1795097269968,
+    "totalModelsFound": 103,
+    "scrapeTimestamp": 1795182642254,
     "allModels": [
       {
         "modelId": "big-pickle",
@@ -312,10 +311,6 @@
         "isFree": true
       },
       {
-        "modelId": "inkling-2-small-free",
-        "isFree": true
-      },
-      {
         "modelId": "beam-free",
         "isFree": true
       },
@@ -385,6 +380,54 @@
       },
       {
         "modelId": "gemini-4-neon",
+        "isFree": false
+      },
+      {
+        "modelId": "text-embedding-3-small",
+        "isFree": false
+      },
+      {
+        "modelId": "text-embedding-3-large",
+        "isFree": false
+      },
+      {
+        "modelId": "gemini-embedding-001",
+        "isFree": false
+      },
+      {
+        "modelId": "gemini-embedding-2",
+        "isFree": false
+      },
+      {
+        "modelId": "codestral-embed",
+        "isFree": false
+      },
+      {
+        "modelId": "mistral-embed",
+        "isFree": false
+      },
+      {
+        "modelId": "qwen3-embedding-8b",
+        "isFree": false
+      },
+      {
+        "modelId": "bge-m3",
+        "isFree": false
+      },
+      {
+        "modelId": "cohere-embed-v5-fast",
+        "isFree": false
+      },
+      {
+        "modelId": "cohere-embed-v5-pro",
+        "isFree": false
+      },
+      {
+        "modelId": "voyage-4",
+        "isFree": false
+      },
+      {
+        "modelId": "voyage-code-4",
         "isFree": false
       }
     ]
