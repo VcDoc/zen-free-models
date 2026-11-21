@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-20T13:50:42.254Z",
+  "updatedAt": "2026-11-21T13:15:07.858Z",
   "source": "https://opencode.ai/docs/zen/",
   "modelIds": [
     "beam-free",
@@ -15,8 +15,8 @@
     "nemotron-3.5-super-vl-free"
   ],
   "raw": {
-    "totalModelsFound": 103,
-    "scrapeTimestamp": 1795182642254,
+    "totalModelsFound": 104,
+    "scrapeTimestamp": 1795266907858,
     "allModels": [
       {
         "modelId": "big-pickle",
@@ -428,6 +428,10 @@
       },
       {
         "modelId": "voyage-code-4",
+        "isFree": false
+      },
+      {
+        "modelId": "gemini-omni-1.2-flash",
         "isFree": false
       }
     ]
