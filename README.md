@@ -68,6 +68,7 @@ flowchart TB
 - `mimo-v2.6-flash-free`
 - `nemotron-3.5-lightning-free`
 - `nemotron-3.5-super-vl-free`
+- `tidepool-alpha-free`
 
 ## Requirements
 
