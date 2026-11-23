@@ -64,7 +64,6 @@ flowchart TB
 - `hy4-flash-free`
 - `iceman-free`
 - `jev-1.13-free`
-- `longcat-2.5-free`
 - `mimo-v2.6-flash-free`
 - `nemotron-3.5-lightning-free`
 - `nemotron-3.5-super-vl-free`

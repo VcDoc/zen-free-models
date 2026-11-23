@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-22T13:04:50.469Z",
+  "updatedAt": "2026-11-23T15:41:32.030Z",
   "source": "https://opencode.ai/docs/zen/",
   "modelIds": [
     "beam-free",
@@ -9,15 +9,14 @@
     "hy4-flash-free",
     "iceman-free",
     "jev-1.13-free",
-    "longcat-2.5-free",
     "mimo-v2.6-flash-free",
     "nemotron-3.5-lightning-free",
     "nemotron-3.5-super-vl-free",
     "tidepool-alpha-free"
   ],
   "raw": {
-    "totalModelsFound": 105,
-    "scrapeTimestamp": 1795352690469,
+    "totalModelsFound": 106,
+    "scrapeTimestamp": 1795448492030,
     "allModels": [
       {
         "modelId": "big-pickle",
@@ -304,10 +303,6 @@
         "isFree": false
       },
       {
-        "modelId": "longcat-2.5-free",
-        "isFree": true
-      },
-      {
         "modelId": "iceman-free",
         "isFree": true
       },
@@ -437,6 +432,14 @@
       },
       {
         "modelId": "gpt-live-1.1",
+        "isFree": false
+      },
+      {
+        "modelId": "jev-1.14",
+        "isFree": false
+      },
+      {
+        "modelId": "qwen4-max-free",
         "isFree": false
       }
     ]
