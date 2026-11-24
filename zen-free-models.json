@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-23T15:41:32.030Z",
+  "updatedAt": "2026-11-24T15:32:30.559Z",
   "source": "https://opencode.ai/docs/zen/",
   "modelIds": [
     "beam-free",
@@ -15,8 +15,8 @@
     "tidepool-alpha-free"
   ],
   "raw": {
-    "totalModelsFound": 106,
-    "scrapeTimestamp": 1795448492030,
+    "totalModelsFound": 108,
+    "scrapeTimestamp": 1795534350559,
     "allModels": [
       {
         "modelId": "big-pickle",
@@ -439,7 +439,15 @@
         "isFree": false
       },
       {
-        "modelId": "qwen4-max-free",
+        "modelId": "grok-imagine-video-1.5",
+        "isFree": false
+      },
+      {
+        "modelId": "grok-imagine-video-1.5-lite",
+        "isFree": false
+      },
+      {
+        "modelId": "kimi-k3.1-pro",
         "isFree": false
       }
     ]
