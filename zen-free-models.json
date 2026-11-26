@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-25T15:18:32.472Z",
+  "updatedAt": "2026-11-26T14:43:59.243Z",
   "source": "https://opencode.ai/docs/zen/",
   "modelIds": [
     "beam-free",
@@ -12,11 +12,11 @@
     "mimo-v2.6-flash-free",
     "nemotron-3.5-lightning-free",
     "nemotron-3.5-super-vl-free",
-    "tidepool-alpha-free"
+    "seaglass-alpha-free"
   ],
   "raw": {
     "totalModelsFound": 108,
-    "scrapeTimestamp": 1795619912472,
+    "scrapeTimestamp": 1795704239243,
     "allModels": [
       {
         "modelId": "big-pickle",
@@ -371,10 +371,6 @@
         "isFree": false
       },
       {
-        "modelId": "tidepool-alpha-free",
-        "isFree": true
-      },
-      {
         "modelId": "gemini-4-neon",
         "isFree": false
       },
@@ -449,6 +445,10 @@
       {
         "modelId": "kimi-k3.1-pro",
         "isFree": false
+      },
+      {
+        "modelId": "seaglass-alpha-free",
+        "isFree": true
       }
     ]
   }
