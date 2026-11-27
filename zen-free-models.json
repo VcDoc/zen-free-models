@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-26T14:43:59.243Z",
+  "updatedAt": "2026-11-27T14:43:07.993Z",
   "source": "https://opencode.ai/docs/zen/",
   "modelIds": [
     "beam-free",
@@ -15,8 +15,8 @@
     "seaglass-alpha-free"
   ],
   "raw": {
-    "totalModelsFound": 108,
-    "scrapeTimestamp": 1795704239243,
+    "totalModelsFound": 110,
+    "scrapeTimestamp": 1795790587993,
     "allModels": [
       {
         "modelId": "big-pickle",
@@ -444,6 +444,14 @@
       },
       {
         "modelId": "kimi-k3.1-pro",
+        "isFree": false
+      },
+      {
+        "modelId": "gpt-transcribe",
+        "isFree": false
+      },
+      {
+        "modelId": "grok-voice-transcribe-2.0",
         "isFree": false
       },
       {
